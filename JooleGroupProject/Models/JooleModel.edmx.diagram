@@ -21,6 +21,7 @@
         <AssociationConnector Association="JooleAppDBModel.FK_tblPropertyValue_tblProducts" ManuallyRouted="false" />
         <AssociationConnector Association="JooleAppDBModel.FK_tblSpecFilter_tblSubCategory" ManuallyRouted="false" />
         <AssociationConnector Association="JooleAppDBModel.FK_tblTypeFilter_tblSubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="JooleAppDBModel.FK_tblPropertyValue_tblProperty" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
