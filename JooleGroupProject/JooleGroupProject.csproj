@@ -54,6 +54,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -132,15 +133,50 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\JooleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.Context.tt</DependentUpon>
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JooleModel.Designer.cs">
+    <Compile Include="Models\JModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
+      <DependentUpon>JModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCategory.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblManufacturer.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProperty.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPropertyValue.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpecFilter.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSubCategory.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTypeFilter.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser.cs">
+      <DependentUpon>JModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,19 +189,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\JooleModel.Context.tt">
+    <Content Include="Models\JModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
+      <DependentUpon>JModel.edmx</DependentUpon>
+      <LastGenOutput>JModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\JModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JModel.edmx</DependentUpon>
+      <LastGenOutput>JModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\JooleModel.edmx">
+    <EntityDeploy Include="Models\JModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JooleModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>JModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\JooleModel.edmx.diagram">
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-    </None>
+    <Content Include="Models\JModel.edmx.diagram">
+      <DependentUpon>JModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

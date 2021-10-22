@@ -13,10 +13,10 @@ namespace JooleGroupProject.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JooleAppDBEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public JooleAppDBEntities()
-            : base("name=JooleAppDBEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

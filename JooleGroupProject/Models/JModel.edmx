@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JooleAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JooleAppDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -178,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JooleAppDBModelStoreContainer">
+        <EntityContainer Name="JooleAppDBModel1StoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblManufacturer" EntityType="Self.tblManufacturer" Schema="dbo" store:Type="Tables" />
@@ -218,10 +218,11 @@
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="JooleAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="JooleAppDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -271,7 +272,7 @@
           <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsTechSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblPropertyValue" Relationship="JooleAppDBModel.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
+          <NavigationProperty Name="tblPropertyValue" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
         </EntityType>
         <EntityType Name="tblPropertyValue">
           <Key>
@@ -281,7 +282,7 @@
           <Property Name="Product_ID" Type="Int32" Nullable="false" />
           <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblPropertyValue_tblProducts" FromRole="tblPropertyValue" ToRole="tblProducts" />
-          <NavigationProperty Name="tblProperty" Relationship="JooleAppDBModel.FK_tblPropertyValue_tblProperty" FromRole="tblPropertyValue" ToRole="tblProperty" />
+          <NavigationProperty Name="tblProperty" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblPropertyValue" ToRole="tblProperty" />
         </EntityType>
         <EntityType Name="tblSpecFilter">
           <Key>
@@ -373,6 +374,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblPropertyValue_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblPropertyValue">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSpecFilter_tblSubCategory">
           <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
           <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
@@ -397,7 +410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JooleAppDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
           <EntitySet Name="tblManufacturers" EntityType="Self.tblManufacturer" />
@@ -424,6 +437,10 @@
             <End Role="tblProducts" EntitySet="tblProducts" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblPropertyValue_tblProperty" Association="Self.FK_tblPropertyValue_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperties" />
+            <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSpecFilter_tblSubCategory" Association="Self.FK_tblSpecFilter_tblSubCategory">
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
             <End Role="tblSpecFilter" EntitySet="tblSpecFilters" />
@@ -432,38 +449,22 @@
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
             <End Role="tblTypeFilter" EntitySet="tblTypeFilters" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPropertyValue_tblProperty" Association="JooleAppDBModel.FK_tblPropertyValue_tblProperty">
-            <End Role="tblProperty" EntitySet="tblProperties" />
-            <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_tblPropertyValue_tblProperty">
-          <End Type="JooleAppDBModel.tblProperty" Role="tblProperty" Multiplicity="1" />
-          <End Type="JooleAppDBModel.tblPropertyValue" Role="tblPropertyValue" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblProperty">
-              <PropertyRef Name="Property_ID" />
-            </Principal>
-            <Dependent Role="tblPropertyValue">
-              <PropertyRef Name="Property_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JooleAppDBModelStoreContainer" CdmEntityContainer="JooleAppDBEntities">
+        <EntityContainerMapping StorageEntityContainer="JooleAppDBModel1StoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="C__RefactorLog">
-            <EntityTypeMapping TypeName="JooleAppDBModel.C__RefactorLog">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
                 <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCategories">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblCategory">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblCategory">
               <MappingFragment StoreEntitySet="tblCategory">
                 <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
                 <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
@@ -471,7 +472,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblManufacturers">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblManufacturer">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblManufacturer">
               <MappingFragment StoreEntitySet="tblManufacturer">
                 <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
                 <ScalarProperty Name="Manufacturer_Name" ColumnName="Manufacturer_Name" />
@@ -480,7 +481,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProducts">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblProduct">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblProduct">
               <MappingFragment StoreEntitySet="tblProducts">
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
@@ -496,7 +497,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProperties">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblProperty">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblProperty">
               <MappingFragment StoreEntitySet="tblProperty">
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
                 <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
@@ -506,7 +507,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPropertyValues">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblPropertyValue">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblPropertyValue">
               <MappingFragment StoreEntitySet="tblPropertyValue">
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
@@ -515,7 +516,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSpecFilters">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblSpecFilter">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblSpecFilter">
               <MappingFragment StoreEntitySet="tblSpecFilter">
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
@@ -525,7 +526,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSubCategories">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblSubCategory">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblSubCategory">
               <MappingFragment StoreEntitySet="tblSubCategory">
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
                 <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
@@ -534,7 +535,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTypeFilters">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblTypeFilter">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblTypeFilter">
               <MappingFragment StoreEntitySet="tblTypeFilter">
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
@@ -544,7 +545,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
-            <EntityTypeMapping TypeName="JooleAppDBModel.tblUser">
+            <EntityTypeMapping TypeName="JooleAppDBModel1.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="User_Name" ColumnName="User_Name" />
