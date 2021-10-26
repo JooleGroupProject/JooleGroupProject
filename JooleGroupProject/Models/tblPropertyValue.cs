@@ -19,5 +19,6 @@ namespace JooleGroupProject.Models
         public string Value { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
+        public virtual tblProperty tblProperty { get; set; }
     }
 }

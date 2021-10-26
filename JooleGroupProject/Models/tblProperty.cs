@@ -18,5 +18,7 @@ namespace JooleGroupProject.Models
         public string Property_Name { get; set; }
         public string IsType { get; set; }
         public string IsTechSpec { get; set; }
+    
+        public virtual tblPropertyValue tblPropertyValue { get; set; }
     }
 }
