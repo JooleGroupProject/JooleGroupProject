@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+<body>
+    <div class="container-fluid">
+
+        <div class="imageDisplay">
+            <img height="100" src="@Url.Content("~/Images/Joole-Logo.jpg")" />
+
+        </div>
+
+
+        <div class="container">
+            <select>
+                <option>Fans</option>
+                <option>Ventillation</option>
+                <option>Power</option>
+                <option>Drill</option>
+            </select>
+            <input type="text" id="SearchItem" />
+            <button type="submit" class="btn">Search</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
