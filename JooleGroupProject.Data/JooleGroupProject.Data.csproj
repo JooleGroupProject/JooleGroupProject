@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{82F3A0E7-E1E6-4ACE-A335-D0424C93555C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>JooleGroupProject.Data</RootNamespace>
+    <AssemblyName>JooleGroupProject.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="JooleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JooleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="JooleModel.edmx.diagram">
+      <DependentUpon>JooleModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JooleModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JooleModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JooleModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="tblCategory.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManufacturer.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduct.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProperty.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPropertyValue.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSpecFilter.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSubCategory.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTypeFilter.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JooleModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JooleModel.edmx</DependentUpon>
+      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="JooleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JooleModel.edmx</DependentUpon>
+      <LastGenOutput>JooleModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

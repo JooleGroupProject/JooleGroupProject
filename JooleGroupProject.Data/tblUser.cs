@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProperty
+    public partial class tblUser
     {
-        public int Property_ID { get; set; }
-        public string Property_Name { get; set; }
-        public string IsType { get; set; }
-        public string IsTechSpec { get; set; }
-    
-        public virtual tblPropertyValue tblPropertyValue { get; set; }
+        public int User_ID { get; set; }
+        public string User_Name { get; set; }
+        public string User_Email { get; set; }
+        public string User_Image { get; set; }
+        public string User_Password { get; set; }
     }
 }
