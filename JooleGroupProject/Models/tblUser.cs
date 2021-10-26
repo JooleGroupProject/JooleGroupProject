@@ -11,13 +11,21 @@ namespace JooleGroupProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblUser
     {
         public int User_ID { get; set; }
+        [RequiredAttribute(ErrorMessage ="Please Enter Your User Name or Email!")]
         public string User_Name { get; set; }
+        [RequiredAttribute(ErrorMessage = "Please Enter Your User Name or Email!")]
         public string User_Email { get; set; }
         public string User_Image { get; set; }
+        [DataType(DataType.Password)]
         public string User_Password { get; set; }
+        [DataType(DataType.Password)]
+        [Compare("User_Password", ErrorMessage = "Confirm Password Does Not Match!")]
+        public string ConfirmPassword { get; set; }
+        public string LoginErrorMessage { get; set; }
     }
 }

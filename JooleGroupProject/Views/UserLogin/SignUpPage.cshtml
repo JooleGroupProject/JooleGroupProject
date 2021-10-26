@@ -1,0 +1,119 @@
+﻿@model JooleGroupProject.Models.tblUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUpPage</title>
+    <link href="~/Content/JooleStyles/Login.css" rel="stylesheet" />
+
+</head>
+<body class="backColor">
+    <script>
+        var previewimg = function (event) {
+            var result = document.getElementById("imgpreview");
+            result.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <div class="signUp-div">
+        <!--<a class="signUp" href="./">Sign Up</a>-->
+        @Html.ActionLink("Back to Login", "LoginPage", "UserLogin", new { @class = "signUp" })
+    </div>
+    <div class="signUpBoard">
+        <!--SignUp Form-->
+        @using (Html.BeginForm("SignUp", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td></td>
+                    <td>Image Preview</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><img class="imgView" id="imgpreview"></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="file" name="imgfile" onchange="previewimg(event)" /></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>UserName:</td>
+                    <td>
+
+                        @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { placeholder = "User Name", required = "required" } })
+                        <br>@Html.ValidationMessageFor(userName => userName.User_Name)
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Email Address:</td>
+                    <td>
+                        @Html.EditorFor(userEmail => userEmail.User_Email, new { htmlAttributes = new { placeholder = "Email Id", required = "required" } })
+                        <br>@Html.ValidationMessageFor(userEmail => userEmail.User_Email)
+                    </td>
+
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td>
+                        @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                        <br>@Html.ValidationMessageFor(userPassword => userPassword.User_Password)
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td>
+                        @Html.EditorFor(userPassword => userPassword.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                        <br>@Html.ValidationMessageFor(validInfo => validInfo.ConfirmPassword)
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td style="color:red;font-size:20px;">
+                        @ViewBag.SuccessMessage
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td style="color:red;font-size:20px;">
+                        @ViewBag.DuplicateMessage
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td align="right">
+                        <input class="buttonSet" id="Submit" type="submit" value="Sign Up" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
