@@ -1,7 +1,9 @@
-﻿
+﻿@model IEnumerable<JooleGP.DAL.tblCategory>
+
 @{
     ViewBag.Title = "Index";
 }
+
 
 <!DOCTYPE html>
 <html>
@@ -23,12 +25,19 @@
 
 
         <div class="container">
+
             <select>
-                <option>Fans</option>
-                <option>Ventillation</option>
-                <option>Power</option>
-                <option>Drill</option>
+                @foreach (var v in Model)
+                {
+                    <option value="@v.Category_ID">@v.Category_Name</option>
+}
             </select>
+            @*<select>
+            <option>Fans</option>
+            <option>Ventillation</option>MetadataException: 'Unable to load the specified metadata resource.'
+            <option>Power</option>
+            <option>Drill</option>
+        </select>*@
             <input type="text" id="SearchItem" />
             <button type="submit" class="btn">Search</button>
         </div>

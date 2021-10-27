@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using JooleGP.DAL;
 using JooleGP.Repo;
 
 namespace JooleGP.BLL
 {
     public class ReportsBLL 
     {
-        public object getCategory()
+        private readonly CategoryRepository catRepository = new CategoryRepository();
+
+        public ReportsBLL() : base()
         {
-            return new CategoryRepository().GetCategory();
         }
-        public object getProducts(int id)
+        public IEnumerable<tblCategory> getCategory()
         {
-            return new CategoryRepository().GetProductsByID(id);
+            return this.catRepository.GetAll();
+        }
+        public IEnumerable<tblProduct> getProducts(int id)
+        {
+            return this.catRepository.GetProductsByID(id);
         }
        
     }

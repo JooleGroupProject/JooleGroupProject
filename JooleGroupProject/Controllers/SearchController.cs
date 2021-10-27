@@ -4,26 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using JooleGroupProject.Models;
+using JooleGP.DAL;
+using JooleGP.Repo;
 
 namespace JooleGroupProject.Controllers
 {
     public class SearchController : Controller
     {
+        private readonly ReportsBLL catService;
+         
         // GET: Search
+     
+     public SearchController()
+        {
+            catService = new ReportsBLL();
+        }
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult getCat()
-        {
-            List<Category> cat = (List<Category>)new ReportsBLL().getCategory();
+
+            IEnumerable<tblCategory> cat = this.catService.getCategory();
 
             return View(cat);
         }
         public ActionResult getProd(int x)
         {
-            List<Product> prod = (List<Product>)new ReportsBLL().getProducts(x);
+            IEnumerable<tblProduct> prod = catService.getProducts(x);
 
             return View(prod);
         }

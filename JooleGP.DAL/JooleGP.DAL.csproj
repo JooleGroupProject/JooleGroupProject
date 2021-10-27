@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JooleGP.DAL</RootNamespace>
     <AssemblyName>JooleGP.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44308</IISExpressSSLPort>
@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -64,9 +66,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -79,73 +81,73 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JooleGPData.Context.tt">
+    <Content Include="JooleAppDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleGPData.edmx</DependentUpon>
-      <LastGenOutput>JooleGPData.Context.cs</LastGenOutput>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+      <LastGenOutput>JooleAppDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="JooleGPData.tt">
+    <Content Include="JooleAppDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleGPData.edmx</DependentUpon>
-      <LastGenOutput>JooleGPData.cs</LastGenOutput>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+      <LastGenOutput>JooleAppDB.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleGPData.Context.cs">
+    <Compile Include="JooleAppDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleGPData.Context.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleGPData.cs">
+    <Compile Include="JooleAppDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleGPData.Designer.cs">
+    <Compile Include="JooleAppDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleGPData.edmx</DependentUpon>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblCategory.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblManufacturer.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProduct.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProperty.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPropertyValue.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSpecFilter.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSubCategory.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTypeFilter.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUser.cs">
-      <DependentUpon>JooleGPData.tt</DependentUpon>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="JooleGPData.edmx">
+    <EntityDeploy Include="JooleAppDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JooleGPData.Designer.cs</LastGenOutput>
+      <LastGenOutput>JooleAppDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="JooleGPData.edmx.diagram">
-      <DependentUpon>JooleGPData.edmx</DependentUpon>
+    <Content Include="JooleAppDB.edmx.diagram">
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

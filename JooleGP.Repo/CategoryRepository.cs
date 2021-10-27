@@ -7,21 +7,18 @@ using System.Web;
 namespace JooleGP.Repo
 {
   
-    public class CategoryRepository : ISearchRepository
+    public class CategoryRepository : Repository<tblCategory>
         {
-            private static JooleAppDBEntities _context = new JooleAppDBEntities();
-           
-            public IEnumerable<object> GetCategory()
-            {
-                return _context.tblCategories.ToList();
-            }
-            public IEnumerable<object> GetProductsByID(int id)
+        public CategoryRepository() : base()
+        {
+        }
+        public IEnumerable<tblProduct> GetProductsByID(int id)
             {
             var query = "SELECT tblProducts.Product_Name FROM tblProducts " +
                 "INNER JOIN tblSubCategory ON tblProducts.SubCategory_ID = tblSubCategory.SubCategory_ID " +
                 "INNER JOIN tblCategory ON tblCategory.Category_ID = tblSubCategory.Category_ID " +
                 "WHERE tblCategory.Category_ID = '" + id + "'";
-            return _context.tblProducts.SqlQuery(query).ToList();
+            return this.context.tblProducts.SqlQuery(query);
             }
             private bool disposed = false;
             protected virtual void Dispose(bool disposing)
@@ -30,7 +27,7 @@ namespace JooleGP.Repo
                 {
                     if (disposing)
                     {
-                        _context.Dispose();
+                        this.context.Dispose();
                     }
                 }
                 this.disposed = true;

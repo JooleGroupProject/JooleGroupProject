@@ -135,8 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,10 +174,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Search\SearchBar.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -201,6 +201,14 @@
     <ProjectReference Include="..\JooleGP.BLL\JooleGP.BLL.csproj">
       <Project>{1FDA8718-BF32-4538-8900-F380BD9B8ABB}</Project>
       <Name>JooleGP.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JooleGP.DAL\JooleGP.DAL.csproj">
+      <Project>{3E52F501-6EE7-44A1-934F-EFADD83C1465}</Project>
+      <Name>JooleGP.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JooleGP.Repo\JooleGP.Repo.csproj">
+      <Project>{DCAF378E-3057-42E4-9AB2-B9A755456CF2}</Project>
+      <Name>JooleGP.Repo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
