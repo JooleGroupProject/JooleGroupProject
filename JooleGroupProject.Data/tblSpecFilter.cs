@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblTypeFilter
+    public partial class tblSpecFilter
     {
         public int Property_ID { get; set; }
         public int SubCategory_ID { get; set; }
-        public string Type_Name { get; set; }
-        public string Type_Options { get; set; }
+        public string Min_value { get; set; }
+        public string Max_value { get; set; }
     
         public virtual tblSubCategory tblSubCategory { get; set; }
     }

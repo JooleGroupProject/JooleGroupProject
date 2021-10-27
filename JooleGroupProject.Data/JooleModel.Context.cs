@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Data.Entity;

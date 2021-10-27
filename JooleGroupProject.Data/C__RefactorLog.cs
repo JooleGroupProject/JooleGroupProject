@@ -7,17 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblPropertyValue
+    public partial class C__RefactorLog
     {
-        public int Property_ID { get; set; }
-        public int Product_ID { get; set; }
-        public string Value { get; set; }
-    
-        public virtual tblProduct tblProduct { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

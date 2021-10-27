@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JooleAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JooleAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -218,7 +218,8 @@
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JooleAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -271,7 +272,7 @@
           <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsTechSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblPropertyValue" Relationship="JooleAppDBModel.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
+          <NavigationProperty Name="tblPropertyValue" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
         </EntityType>
         <EntityType Name="tblPropertyValue">
           <Key>
@@ -281,7 +282,7 @@
           <Property Name="Product_ID" Type="Int32" Nullable="false" />
           <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblPropertyValue_tblProducts" FromRole="tblPropertyValue" ToRole="tblProducts" />
-          <NavigationProperty Name="tblProperty" Relationship="JooleAppDBModel.FK_tblPropertyValue_tblProperty" FromRole="tblPropertyValue" ToRole="tblProperty" />
+          <NavigationProperty Name="tblProperty" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblPropertyValue" ToRole="tblProperty" />
         </EntityType>
         <EntityType Name="tblSpecFilter">
           <Key>
@@ -373,6 +374,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblPropertyValue_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblPropertyValue">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSpecFilter_tblSubCategory">
           <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
           <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
@@ -424,6 +437,10 @@
             <End Role="tblProducts" EntitySet="tblProducts" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblPropertyValue_tblProperty" Association="Self.FK_tblPropertyValue_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperties" />
+            <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSpecFilter_tblSubCategory" Association="Self.FK_tblSpecFilter_tblSubCategory">
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
             <End Role="tblSpecFilter" EntitySet="tblSpecFilters" />
@@ -432,23 +449,7 @@
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
             <End Role="tblTypeFilter" EntitySet="tblTypeFilters" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPropertyValue_tblProperty" Association="JooleAppDBModel.FK_tblPropertyValue_tblProperty">
-            <End Role="tblProperty" EntitySet="tblProperties" />
-            <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_tblPropertyValue_tblProperty">
-          <End Type="JooleAppDBModel.tblProperty" Role="tblProperty" Multiplicity="1" />
-          <End Type="JooleAppDBModel.tblPropertyValue" Role="tblPropertyValue" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblProperty">
-              <PropertyRef Name="Property_ID" />
-            </Principal>
-            <Dependent Role="tblPropertyValue">
-              <PropertyRef Name="Property_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<tblProduct>
+@using JooleGroupProject.Data
+
+@{
+    ViewBag.Title = "ProductSummary";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Order</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span>
+                            Search:
+                        </span>
+                        <button>
+                            Save
+                        </button>
+                        <button>
+                            Clear
+                        </button>
+                    </li>
+                    <li class="list-group-item">
+                        <button>
+                            Product
+                        </button>
+                        <button>
+                            Project
+                        </button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            Product Type
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Model Year:</b> <input /> - <input />
+                    </li>
+                    <li class="list-group-item">
+                        <span>
+                            Technical Specifications
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="customRange1" class="form-label">Airlfow(CFM)</label>
+                        <input type="range" class="form-range" id="customRange1">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                @foreach (tblProduct product in Model)
+                {
+                <div class="card">
+                    <img class="card-img-top" src="#" alt="Product Image" />
+                    <div class="card-body">
+                        <h5>@product.Product_Name</h5>
+                        <h5>@product.Series Series</h5>
+                        <h5>@product.Model</h5>
+                        <input type="checkbox"/><label>Compare</label>
+                        <button class="btn btn-primary">Add to</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

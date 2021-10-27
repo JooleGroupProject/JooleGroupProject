@@ -7,13 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class C__RefactorLog
+    public partial class tblTypeFilter
     {
-        public System.Guid OperationKey { get; set; }
+        public int Property_ID { get; set; }
+        public int SubCategory_ID { get; set; }
+        public string Type_Name { get; set; }
+        public string Type_Options { get; set; }
+    
+        public virtual tblSubCategory tblSubCategory { get; set; }
     }
 }

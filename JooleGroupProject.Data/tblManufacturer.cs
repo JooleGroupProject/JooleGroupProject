@@ -7,33 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleGroupProject.Models
+namespace JooleGroupProject.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProduct
+    public partial class tblManufacturer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblProduct()
+        public tblManufacturer()
         {
-            this.tblPropertyValues = new HashSet<tblPropertyValue>();
+            this.tblProducts = new HashSet<tblProduct>();
         }
     
-        public int Product_ID { get; set; }
-        public int SubCategory_ID { get; set; }
         public int Manufacturer_ID { get; set; }
-        public string Product_Name { get; set; }
-        public string Product_Image { get; set; }
-        public string Series { get; set; }
-        public string Model { get; set; }
-        public int Model_Year { get; set; }
-        public string Series_Info { get; set; }
-        public string Featured { get; set; }
+        public string Manufacturer_Name { get; set; }
+        public string Manufacturer_Department { get; set; }
     
-        public virtual tblManufacturer tblManufacturer { get; set; }
-        public virtual tblSubCategory tblSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
+        public virtual ICollection<tblProduct> tblProducts { get; set; }
     }
 }
