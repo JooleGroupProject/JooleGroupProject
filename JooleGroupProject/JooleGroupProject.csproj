@@ -133,55 +133,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\C__RefactorLog.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\ProductViewModel.cs" />
-    <Compile Include="Models\tblCategory.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblManufacturer.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProperty.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblPropertyValue.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblSpecFilter.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblSubCategory.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblTypeFilter.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblUser.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,29 +146,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Product\ProductSummary.css" />
+    <Content Include="Content\UserLogin\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\JooleModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\JooleModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.cs</LastGenOutput>
-    </Content>
+    <Content Include="Images\JooleLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\JooleModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JooleModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\JooleModel.edmx.diagram">
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -237,6 +178,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\ProductSummary.cshtml" />
+    <Content Include="Views\UserLogin\LoginPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

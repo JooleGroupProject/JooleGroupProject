@@ -1,0 +1,101 @@
+﻿@model JooleGroupProject.Data.tblUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginPage</title>
+    <link href="~/Content/UserLogin/Login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="backColor">
+    <div class="signUp-div">
+        <!--<a class="signUp" href="./">Sign Up</a>-->
+        @Html.ActionLink("Sign Up", "SignUpPage", "UserLogin", new { @class = "signUp" })
+    </div>
+    <div>
+        <div id="login-div">
+
+            @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post))
+            {
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td></td>
+                        <td align="center">
+                            <img src="~/Images/JooleLogo.png" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br /><br /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="center" style="font-size: 25px; font-weight:bold;">Building Product Selection Platform</td>
+                    </tr>
+                    <tr>
+                        <td><br /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="inner-addon right-addon" align="center">
+                            @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { @class = "editorBar", placeholder = "Username or Email" } })
+
+                            <i class="glyphicon glyphicon-user"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="center">@Html.ValidationMessageFor(validInfo => validInfo.User_Name)</td>
+                    </tr>
+                    <tr>
+                        <td><br /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="inner-addon right-addon" align="center">
+                            @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new { @class = "editorBar", placeholder = "Password" } })
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="center">@Html.ValidationMessageFor(validInfo => validInfo.User_Password)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="field-validation-error" align="center">@Html.DisplayFor(errInfo => errInfo.LoginErrorMessage)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right">
+                            <input class="buttonSet" id="Submit" type="submit" value="Login" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                </table>
+            }
+
+
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
