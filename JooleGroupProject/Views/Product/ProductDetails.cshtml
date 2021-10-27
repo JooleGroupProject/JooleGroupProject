@@ -1,0 +1,34 @@
+﻿@model JooleGroupProject.Models.ProductViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductDetails</title>
+</head>
+<body>
+    <div>
+        <label>Product Name</label>@Model.Product.Product_Name
+        <br />
+        <label>Manufacture Id</label>@Model.Product.Manufacturer_ID
+        <br />
+        <label>Model Year</label>@Model.Product.Model_Year
+        <br />
+        <h1>Tech specs</h1>
+        <table>
+            @foreach (KeyValuePair<string, string> property in Model.TechSpecsProps)
+            {
+                <tr>
+                    <td>@property.Key</td>
+                    <td>@property.Value</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

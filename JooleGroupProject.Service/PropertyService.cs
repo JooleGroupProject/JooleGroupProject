@@ -8,7 +8,7 @@ using JooleGroupProject.Repo;
 
 namespace JooleGroupProject.Service
 {
-    class PropertyService
+    public class PropertyService
     {
         PropertyValueRepository propValueRepo;
         PropertyRepository propRepo;

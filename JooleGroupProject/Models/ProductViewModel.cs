@@ -11,5 +11,10 @@ namespace JooleGroupProject.Models
         public tblProduct Product { get; set; }
         public Dictionary<string, string> TechSpecsProps { get; set; }
 
+        public ProductViewModel()
+        {
+            TechSpecsProps = new Dictionary<string, string>();
+        }
+
     }
 }

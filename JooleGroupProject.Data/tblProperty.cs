@@ -14,11 +14,18 @@ namespace JooleGroupProject.Data
     
     public partial class tblProperty
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblProperty()
+        {
+            this.tblPropertyValues = new HashSet<tblPropertyValue>();
+        }
+    
         public int Property_ID { get; set; }
         public string Property_Name { get; set; }
         public string IsType { get; set; }
         public string IsTechSpec { get; set; }
     
-        public virtual tblPropertyValue tblPropertyValue { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
     }
 }

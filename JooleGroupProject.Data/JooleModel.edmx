@@ -53,6 +53,7 @@
         <EntityType Name="tblPropertyValue">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Product_ID" />
           </Key>
           <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Product_ID" Type="int" Nullable="false" />
@@ -132,7 +133,7 @@
         </Association>
         <Association Name="FK_tblPropertyValue_tblProperty">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
-          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblProperty">
               <PropertyRef Name="Property_ID" />
@@ -272,11 +273,12 @@
           <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsTechSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblPropertyValue" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
+          <NavigationProperty Name="tblPropertyValues" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
         </EntityType>
         <EntityType Name="tblPropertyValue">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Product_ID" />
           </Key>
           <Property Name="Property_ID" Type="Int32" Nullable="false" />
           <Property Name="Product_ID" Type="Int32" Nullable="false" />
@@ -376,7 +378,7 @@
         </Association>
         <Association Name="FK_tblPropertyValue_tblProperty">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
-          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblProperty">
               <PropertyRef Name="Property_ID" />

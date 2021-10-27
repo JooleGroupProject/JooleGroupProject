@@ -19,5 +19,21 @@ namespace JooleGroupProject.Repo
                    where propertyValue.Product_ID == productId
                    select propertyValue;
         }
+
+        //Unfinished
+        public IEnumerable<object> GetPropertyByProductId(int productId)
+        {
+            return from v in this.entities
+                   join p in context.tblProperties
+                   on v.Property_ID equals p.Property_ID
+                   where v.Product_ID == productId
+                   select new
+                   {
+                       PropertyName = p.Property_Name,
+                       PropertyValue = v.Value,
+                       IsTechSpec = p.IsTechSpec,
+                       IsType = p.IsType
+                   };
+        }
     }
 }
