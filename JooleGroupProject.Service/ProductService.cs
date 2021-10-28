@@ -32,5 +32,11 @@ namespace JooleGroupProject.Service
         {
             return this.productRepository.GetProductsBySubCategory(subCatId);
         }
+
+        public IEnumerable<tblProduct> GetProductDetails(int id)
+        {
+            return this.productRepository.GetProductDetails(id);
+        }
+        
     }
 }

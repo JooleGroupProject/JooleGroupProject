@@ -22,5 +22,12 @@ namespace JooleGroupProject.Repo
                     select product;
         }
 
+        public IEnumerable<tblProduct> GetProductDetails(int id)
+        {
+            return from product in this.entities
+                   where product.Product_ID == id
+                   select product;
+        }
+
     }
 }

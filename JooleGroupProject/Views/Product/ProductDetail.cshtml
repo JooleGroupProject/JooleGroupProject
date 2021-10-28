@@ -1,0 +1,174 @@
+﻿@model IEnumerable<tblProduct>
+@using JooleGroupProject.Data
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Summary</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+
+    <h2>Product Summary</h2>
+
+
+    @{
+        IEnumerable<tblProduct> product = ViewData["tblProducts"] as IEnumerable<tblProduct>;
+        IEnumerable<tblPropertyValue> UseType = ViewData["UseType"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Application = ViewData["Application"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Accessories = ViewData["Accessories"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Airflow = ViewData["Airflow"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Power = ViewData["Power"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> OperatingVoltage = ViewData["OperatingVoltage"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> FanSpeed = ViewData["FanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> NumFanSpeed = ViewData["NumFanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> SoundAtMaxSpeed = ViewData["SoundAtMaxSpeed"] as IEnumerable<tblPropertyValue>;
+
+    }
+
+<div id="DescriptionDIV">
+    <h5>DESCRIPTION</h5>
+    <table id="DescriptionTable">
+        <tr>
+            <th id="TableHeader">Manufacture</th>
+
+            @foreach (tblProduct tblproduct in product)
+            {
+                <td>@tblproduct.tblManufacturer.Manufacturer_Name</td>
+            }
+
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Series</th>
+
+            @foreach (tblProduct tblproduct in product)
+            {
+                <td>@tblproduct.Series</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Model</th>
+
+            @foreach (tblProduct tblproduct in product)
+            {
+                <td>@tblproduct.Model</td>
+            }
+        </tr>
+
+    </table>
+
+</div>
+
+<div id="TypeDIV">
+    <h5>Type</h5>
+    <table id="TypeTable">
+        <tr>
+            <th id="TableHeader">Use Type</th>
+            @foreach (tblPropertyValue pVal in UseType)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Application</th>
+            @foreach (tblPropertyValue pVal in Application)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Mounting Location</th>
+            <td></td>
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Accessories</th>
+            @foreach (tblPropertyValue pVal in Accessories)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Model Year</th>
+            @foreach (tblProduct tblproduct in product)
+            {
+                <td>@tblproduct.Model_Year</td>
+            }
+        </tr>
+
+    </table>
+</div>
+
+<div id="TechDIV">
+    <h5>TECHNICAL SPECIFICATIONS</h5>
+    <table id="TechTable">
+        <tr>
+            <th id="TableHeader">Air Flow (CFM)</th>
+            @foreach (tblPropertyValue pVal in Airflow)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Power (W)</th>
+            <th id="TableHeader">Min</th>
+            <th id="TableHeader">Max</th>
+            @foreach (tblPropertyValue pVal in Power)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Operating Voltage (VAC></th>
+            <th id="TableHeader">Min</th>
+            <th id="TableHeader">Max</th>
+            @foreach (tblPropertyValue pVal in OperatingVoltage)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Fan Speed (RPM)</th>
+            <th id="TableHeader">Min</th>
+            <th id="TableHeader">Max</th>
+            @foreach (tblPropertyValue pVal in FanSpeed)
+            {
+                <td>@pVal.Value</td>
+            }
+
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Number of fan speeds</th>
+            @foreach (tblPropertyValue pVal in NumFanSpeed)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+
+        <tr>
+            <th id="TableHeader">Sound at max speed(dBA)</th>
+            @foreach (tblPropertyValue pVal in SoundAtMaxSpeed)
+            {
+                <td>@pVal.Value</td>
+            }
+        </tr>
+    </table>
+</div>
+</body>
+</html>

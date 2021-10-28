@@ -1,0 +1,27 @@
+﻿body {
+}
+
+#DescriptionDIV {
+    margin-top: 30px;
+}
+
+#TypeDIV{
+    margin-top:30px;
+}
+
+#TechDIV{
+    margin:0;
+}
+
+#DescriptionTable {
+}
+
+#TypeTable {
+}
+
+#TechTable {
+}
+
+#TableHeader {
+    background-color: #DCDCDC
+}

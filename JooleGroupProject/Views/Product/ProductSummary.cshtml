@@ -60,7 +60,8 @@
                 @foreach (tblProduct product in Model)
                 {
                 <div class="card">
-                    <img class="card-img-top" src="#" alt="Product Image" />
+                     <a href='@Url.Action("ProductDetail", "Product", new { id = product.Product_ID })'> <img class="card-img-top" src="#" alt="Product Image" /></a>
+
                     <div class="card-body">
                         <h5>@product.Product_Name</h5>
                         <h5>@product.Series Series</h5>
