@@ -6,31 +6,52 @@ using System.Web;
 using System.Web.Mvc;
 using JooleGP.DAL;
 using JooleGP.Repo;
+using System.Web.Services;
+using JooleGroupProject.Models;
 
 namespace JooleGroupProject.Controllers
 {
     public class SearchController : Controller
     {
         private readonly ReportsBLL catService;
-         
+        public SearchModel viewModel;
         // GET: Search
      
-     public SearchController()
+        public SearchController()
         {
             catService = new ReportsBLL();
+            viewModel = new SearchModel();
         }
         public ActionResult Index()
         {
 
-            IEnumerable<tblCategory> cat = this.catService.getCategory();
+            viewModel.Categories = this.catService.getCategory().ToList();
+            viewModel.CurrentList = this.catService.getProducts(1).ToList();
+          
 
-            return View(cat);
+                return View(viewModel);
         }
-        public ActionResult getProd(int x)
+    
+        [HttpPost]
+        public JsonResult GetProdName(string Prefix)
         {
-            IEnumerable<tblProduct> prod = catService.getProducts(x);
 
-            return View(prod);
+            var Countries = from c in this.catService.getProducts(1)
+                             where c.Product_Name.StartsWith(Prefix)
+                             select new { c.Product_Name };
+            Console.WriteLine(Countries.ToString());
+    
+            return Json(Countries, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public ActionResult Index(string CustomerName)
+        {
+            return View(viewModel);
+        }
+        public ActionResult ProductSearchBar()
+        {
+            return View();
+        }
+       
     }
 }

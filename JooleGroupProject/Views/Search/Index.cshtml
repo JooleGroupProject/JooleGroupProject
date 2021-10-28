@@ -1,7 +1,8 @@
-﻿@model IEnumerable<JooleGP.DAL.tblCategory>
+﻿@model JooleGroupProject.Models.SearchModel
 
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
 
 
@@ -12,37 +13,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#Product_Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Search/GetProdName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Product_Name, value: item.Product_Name };
+                            }));
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
 </head>
-
-
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-left: 450px; margin-top: 200px;">
 
         <div class="imageDisplay">
-            <img height="100" src="@Url.Content("~/Images/Joole-Logo.jpg")" />
+            <img height="200" width="400" src="@Url.Content("~/Images/Joole-Logo.jpg")" />
 
         </div>
 
+        <span style="color: blue; font-weight: bold; font-size: 18pt;">Building Product Selection Platform</span>
+        <div>
 
-        <div class="container">
+            @using (Html.BeginForm())
+            {
 
-            <select>
-                @foreach (var v in Model)
-                {
-                    <option value="@v.Category_ID">@v.Category_Name</option>
-}
-            </select>
-            @*<select>
-            <option>Fans</option>
-            <option>Ventillation</option>MetadataException: 'Unable to load the specified metadata resource.'
-            <option>Power</option>
-            <option>Drill</option>
-        </select>*@
-            <input type="text" id="SearchItem" />
-            <button type="submit" class="btn">Search</button>
+                <select id="catSelect">
+                    @foreach (var v in Model.Categories)
+                    {
+                        <option value="@v.Category_ID">@v.Category_Name</option>
+                    }
+                </select>
+                Html.RenderPartial("ProductSearchBar");
+
+                <button type="submit" class="btn">Search</button>
+            }
+
         </div>
+
 
     </div>
+
+
+
 
 </body>
 </html>

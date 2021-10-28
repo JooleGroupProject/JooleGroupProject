@@ -53,6 +53,7 @@
         <EntityType Name="tblPropertyValue">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Product_ID" />
           </Key>
           <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Product_ID" Type="int" Nullable="false" />
@@ -77,12 +78,13 @@
         </EntityType>
         <EntityType Name="tblTypeFilter">
           <Key>
-            <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Filter_ID" />
           </Key>
-          <Property Name="Property_ID" Type="int" Nullable="false" />
+          <Property Name="Filter_ID" Type="int" Nullable="false" />
           <Property Name="SubCategory_ID" Type="int" Nullable="false" />
           <Property Name="Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type_Options" Type="nvarchar" MaxLength="50" />
+          <Property Name="Property_ID" Type="int" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -132,7 +134,7 @@
         </Association>
         <Association Name="FK_tblPropertyValue_tblProperty">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
-          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblProperty">
               <PropertyRef Name="Property_ID" />
@@ -272,11 +274,12 @@
           <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsTechSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblPropertyValue" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
+          <NavigationProperty Name="tblPropertyValues" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
         </EntityType>
         <EntityType Name="tblPropertyValue">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Product_ID" />
           </Key>
           <Property Name="Property_ID" Type="Int32" Nullable="false" />
           <Property Name="Product_ID" Type="Int32" Nullable="false" />
@@ -308,12 +311,13 @@
         </EntityType>
         <EntityType Name="tblTypeFilter">
           <Key>
-            <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Filter_ID" />
           </Key>
-          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="Filter_ID" Type="Int32" Nullable="false" />
           <Property Name="SubCategory_ID" Type="Int32" Nullable="false" />
           <Property Name="Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type_Options" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Property_ID" Type="Int32" />
           <NavigationProperty Name="tblSubCategory" Relationship="Self.FK_tblTypeFilter_tblSubCategory" FromRole="tblTypeFilter" ToRole="tblSubCategory" />
         </EntityType>
         <EntityType Name="tblUser">
@@ -376,7 +380,7 @@
         </Association>
         <Association Name="FK_tblPropertyValue_tblProperty">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
-          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="0..1" />
+          <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblProperty">
               <PropertyRef Name="Property_ID" />
@@ -410,7 +414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JooleAppDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JooleAppDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
           <EntitySet Name="tblManufacturers" EntityType="Self.tblManufacturer" />
@@ -455,7 +459,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JooleAppDBModelStoreContainer" CdmEntityContainer="JooleAppDBEntities">
+        <EntityContainerMapping StorageEntityContainer="JooleAppDBModelStoreContainer" CdmEntityContainer="JooleAppDBEntities1">
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="JooleAppDBModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
@@ -537,10 +541,11 @@
           <EntitySetMapping Name="tblTypeFilters">
             <EntityTypeMapping TypeName="JooleAppDBModel.tblTypeFilter">
               <MappingFragment StoreEntitySet="tblTypeFilter">
-                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Filter_ID" ColumnName="Filter_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
                 <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
                 <ScalarProperty Name="Type_Options" ColumnName="Type_Options" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
