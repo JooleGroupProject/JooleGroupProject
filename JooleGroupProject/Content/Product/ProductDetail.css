@@ -3,6 +3,7 @@
 
 #DescriptionDIV {
     margin-top: 30px;
+    width:100%;
 }
 
 #TypeDIV{
@@ -10,7 +11,9 @@
 }
 
 #TechDIV{
-    margin:0;
+    position: absolute;
+    right: 400px;
+    top:150px;
 }
 
 #DescriptionTable {
