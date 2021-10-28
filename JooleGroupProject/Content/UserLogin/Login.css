@@ -8,6 +8,13 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border-radius: var(--border-redius);
+    
+}
 #login-div {
     position: absolute;
     width: 600px;
@@ -15,8 +22,8 @@ body {
     max-width: 600px;
     max-height: 500px;
     border-radius: var(--border-redius);
-    left: 32%;
-    top: 20%;
+    left: 35%;
+    top: 10%;
 }
 .signUp-div{
     position: absolute;
@@ -48,8 +55,8 @@ body {
 .imgView {
     background-color: #808080;
     border-radius: 100% !important;
-    width: 150px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     background-size: cover;
 }
 
@@ -63,16 +70,28 @@ body {
     border-radius: 5px;
     border:0;
     height: 40px;
-    width: 600px;
+    width: 550px;
 }
-.buttonSet {
+.LoginButton {
+    position: relative;
     border-radius: 5px;
     border: 0;
     height: 30px;
     width: 100px;
+    right: 28px;
     background-color: #4682B4;
     color:white;
 }
+
+.SignUpButton {
+    border-radius: 5px;
+    border: 0;
+    height: 30px;
+    width: 70px;
+    background-color: #4682B4;
+    color: white;
+}
+
 ::placeholder {
     padding-left: 10px;
 }
@@ -98,23 +117,27 @@ body {
 
 /* align glyph */
 .left-addon .glyphicon {
-    left: 0px;
+    left: 25px;
 }
 
 .right-addon .glyphicon {
-    right: 0px;
+    right: 25px;
 }
 
 /* add padding  */
 .left-addon input {
-    padding-left: 30px;
+    padding-left: 80px;
 }
 
 .right-addon input {
-    padding-right: 30px;
+    padding-right: 80px;
 }
 
 
 .field-validation-error{
     color: red;
 }
+
+
+
+

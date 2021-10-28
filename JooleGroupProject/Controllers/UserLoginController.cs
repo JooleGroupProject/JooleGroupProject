@@ -22,11 +22,22 @@ namespace JooleGroupProject.Controllers
         {
             using (JooleAppDBEntities db = new JooleAppDBEntities())
             {
-                var userDetail = db.tblUsers.Where(userLogin => userLogin.User_Name == tUser.User_Name && userLogin.User_Password == tUser.User_Password ||
-                                                  (userLogin.User_Email == tUser.User_Email && userLogin.User_Password == tUser.User_Password)).FirstOrDefault();
+                tblUser userDetail = null; 
+                var inputUserName = tUser.User_Name.ToString();
+
+                if (inputUserName.Contains("@"))
+                {
+                    tUser.User_Email = inputUserName;
+                    userDetail = db.tblUsers.Where(userLogin =>userLogin.User_Email == tUser.User_Email && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
+                }
+                else
+                {
+                    userDetail = db.tblUsers.Where(userLogin => userLogin.User_Name == inputUserName && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
+                }
+                
                 if (userDetail == null)
                 {
-                    tUser.LoginErrorMessage = "Wrong User Name or Password!";
+                    tUser.LoginErrorMessage = "Wrong User Name/Email or Password!";
                     return View("LoginPage", tUser);
                 }
                 else
