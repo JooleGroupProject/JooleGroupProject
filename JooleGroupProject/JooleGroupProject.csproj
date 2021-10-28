@@ -171,7 +171,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\ProductSummary.cshtml" />
-    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Product\ProductDetails_placeholder.cshtml" />
+    <Content Include="Views\Product\ProductCompare_placeholder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

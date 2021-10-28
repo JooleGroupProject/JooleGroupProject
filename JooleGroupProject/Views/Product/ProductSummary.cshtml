@@ -1,4 +1,4 @@
-﻿@model IEnumerable<tblProduct>
+﻿@model ProductSummaryViewModel
 @using JooleGroupProject.Models
 @using JooleGroupProject.Data
 
@@ -13,6 +13,9 @@
     <title>Order</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 </head>
 <body>
     <div class="container">
@@ -42,9 +45,21 @@
                         <span>
                             Product Type
                         </span>
-                    </li>
                     <li class="list-group-item">
                         <b>Model Year:</b> <input /> - <input />
+                        @foreach (KeyValuePair<string, List<string>> prop in Model.TypeFilters)
+                        {
+                            <div>
+                                <label>@prop.Key</label>
+                                <select>
+                                    <option></option>
+                                    @foreach (string propOption in prop.Value)
+                                    {
+                                        <option>@propOption</option>
+                                    }
+                                </select>
+                            </div>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span>
@@ -53,26 +68,57 @@
                     </li>
                     <li class="list-group-item">
                         <label for="customRange1" class="form-label">Airlfow(CFM)</label>
-                        <input type="range" class="form-range" id="customRange1">
+                        <input type="number" id="min"/>
+                        <br />
+                        <div id="slider-range"></div>
+                        <br />
+                        <input type="number" id="max"/>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-8">
-                @foreach (tblProduct product in Model)
+                @foreach (ProductViewModel product in Model.Products)
                 {
-                <div class="card">
-                    <img class="card-img-top" src="#" alt="Product Image" />
-                    <div class="card-body">
-                        <h5>@product.Product_Name</h5>
-                        <h5>@product.Series Series</h5>
-                        <h5>@product.Model</h5>
-                        <input type="checkbox"/><label>Compare</label>
-                        <button class="btn btn-primary">Add to</button>
+                    <div class="card">
+                        <img class="card-img-top" src="#" alt="Product Image" />
+                        <div class="card-body">
+                            
+                            <h5><a href="ProductDetails_placeholder?productId=@product.Product.Product_ID">@product.Product.Product_Name</a></h5>
+                            <h5>@product.Product.Series Series</h5>
+                            <h5>@product.Product.Model</h5>
+                            @foreach (string typePropName in Model.TypeFilters.Keys)
+                            {
+                                <div>@typePropName: @product.TypeProps[typePropName]</div>
+                            }
+                            @foreach (KeyValuePair<string, string> prop in product.TechSpecsProps)
+                            {
+                                <div>@prop.Key : @prop.Value</div>
+                            }
+                            <input type="checkbox" /><label>Compare</label>
+                            <button class="btn btn-primary">Add to</button>
+                        </div>
                     </div>
-                </div>
                 }
             </div>
+            @Html.ActionLink("Compare Products","ProductCompare_placeholder")
         </div>
     </div>
+
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [0, 100],
+                slide: function (event, ui) {
+                    $("#min").val(ui.values[0]);
+                    $("#max").val(ui.values[1])
+                }
+            });
+            $("#min").val($("#slider-range").slider("values", 0));
+            $("#max").val($("#slider-range").slider("values", 1));
+        });
+    </script>
 </body>
 </html>

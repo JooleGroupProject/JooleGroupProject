@@ -1,0 +1,71 @@
+﻿@model List<ProductViewModel>
+@using JooleGroupProject.Data;
+@using JooleGroupProject.Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td>DESCRIPTION</td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            @foreach (ProductViewModel product in Model)
+            {
+                <td>@product.Product.Manufacturer_ID</td>
+            }
+        </tr>
+        <tr>
+            <td>Series</td>
+            @foreach (ProductViewModel product in Model)
+            {
+                <td>@product.Product.Series</td>
+            }
+        </tr>
+        <tr>
+            <td>Model</td>
+            @foreach (ProductViewModel product in Model)
+            {
+                <td>@product.Product.Model</td>
+
+            }
+        </tr>
+        <tr>
+            <td>TYPE</td>
+            @foreach (string propName in @Model[0].TypeProps.Keys)
+            {
+            <tr>
+                <td>@propName</td>
+                @foreach (ProductViewModel product in Model)
+                {
+                    <td>@product.TypeProps[@propName]</td>
+                }
+            </tr>
+        }
+            </tr>
+            <tr>
+                <td>TECHNICAL SPECIFIC</td>
+                @foreach (string propName in @Model[0].TechSpecsProps.Keys)
+                {
+                <tr>
+                    <td>@propName</td>
+                    @foreach (ProductViewModel product in Model)
+                    {
+                        <td>@product.TechSpecsProps[@propName]</td>
+                    }
+                </tr>
+                }
+                </tr>
+            </table>
+    </body>
+</html>
