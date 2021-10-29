@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center">@Html.ValidationMessageFor(validInfo => validInfo.User_Name)</td>
+                    <td align="center">@Html.ValidationMessageFor(userName => userName.User_Name)</td>
                 </tr>
                 <tr>
                     <td><br /></td>
@@ -64,18 +64,18 @@
                 <tr>
                     <td></td>
                     <td class="inner-addon right-addon" align="center">
-                        @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new { @class = "editorBar", placeholder = "Password" } })
+                        @Html.EditorFor(userName => userName.User_Password, new { htmlAttributes = new { @class = "editorBar", placeholder = "Password" } })
                         <i class="glyphicon glyphicon-lock"></i>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center">@Html.ValidationMessageFor(validInfo => validInfo.User_Password)</td>
+                    <td align="center">@Html.ValidationMessageFor(userName => userName.User_Password)</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td align="center">
-                        <label class="field-validation-error" align="center">@Html.DisplayFor(errInfo => errInfo.LoginErrorMessage)</label>
+                        <label class="field-validation-error" align="center">@Html.DisplayFor(userName => userName.LoginErrorMessage)</label>
                     </td>
                 </tr>
                 <tr>
@@ -153,8 +153,8 @@
                                 <tr>
                                     <td style="font-weight: bold;">Email Address:</td>
                                     <td>
-                                        @Html.EditorFor(userEmail => userEmail.User_Email, new { htmlAttributes = new {id= "txtName", placeholder = "Email Id", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userEmail => userEmail.User_Email)
+                                        @Html.EditorFor(userName => userName.User_Email, new { htmlAttributes = new {id= "txtName", placeholder = "Email Id", required = "required" } })
+                                        <br>@Html.ValidationMessageFor(userName => userName.User_Email)
                                     </td>
 
                                     <td></td>
@@ -163,8 +163,8 @@
                                 <tr>
                                     <td style="font-weight: bold;">Password:</td>
                                     <td>
-                                        @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new {  placeholder = "Password", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userPassword => userPassword.User_Password)
+                                        @Html.EditorFor(userName => userName.User_Password, new { htmlAttributes = new {  placeholder = "Password", required = "required" } })
+                                        <br>@Html.ValidationMessageFor(userName => userName.User_Password)
                                     </td>
                                     <td></td>
                                 </tr>
@@ -172,8 +172,8 @@
                                 <tr>
                                     <td style="font-weight: bold;">Confirm Password:</td>
                                     <td>
-                                        @Html.EditorFor(userPassword => userPassword.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(validInfo => validInfo.ConfirmPassword)
+                                        @Html.EditorFor(userName => userName.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                                        <br>@Html.ValidationMessageFor(userName => userName.ConfirmPassword)
                                     </td>
                                     <td></td>
                                 </tr>

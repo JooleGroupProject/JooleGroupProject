@@ -125,19 +125,18 @@ namespace JooleGroupProject.Controllers
                         return View("LoginPage",tUser);
                     }
 
-                    public ActionResult SignUp(HttpPostedFileBase imgfile)
+                public ActionResult SignUp(HttpPostedFileBase imgfile)
+                {
+                    if (imgfile != null && imgfile.ContentLength > 0)
                     {
-                        if (imgfile != null && imgfile.ContentLength > 0)
-                        {
-                            string imgname = Path.GetFileName(imgfile.FileName);
-                            string imgext = Path.GetExtension(imgname);
-                            string imgpath = Path.Combine(Server.MapPath("~/Images"), imgname);
-                            imgfile.SaveAs(imgpath);
+                        string imgname = Path.GetFileName(imgfile.FileName);
+                        string imgext = Path.GetExtension(imgname);
+                        string imgpath = Path.Combine(Server.MapPath("~/Images"), imgname);
+                        imgfile.SaveAs(imgpath);
 
-                        }
-                        return View();
-                    }*/
-        }
+                    }
+                    return View();
+                }
     }
 
 }
