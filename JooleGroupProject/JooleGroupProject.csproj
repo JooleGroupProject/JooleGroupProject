@@ -135,7 +135,56 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
     <Compile Include="Models\SearchModel.cs" />
+=======
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JooleAppDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleAppDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JooleAppDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JooleAppDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JooleModel.cs" />
+    <Compile Include="Models\tblCategory.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblManufacturer.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProperty.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPropertyValue.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpecFilter.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSubCategory.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTypeFilter.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser.cs">
+      <DependentUpon>JooleAppDB.tt</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +197,32 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+<<<<<<< Updated upstream
     <Content Include="Images\Joole-Logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+=======
+    <Content Include="Images\JooleLogo.png" />
+    <Content Include="Models\JooleAppDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+      <LastGenOutput>JooleAppDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\JooleAppDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+      <LastGenOutput>JooleAppDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\JooleAppDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JooleAppDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\JooleAppDB.edmx.diagram">
+      <DependentUpon>JooleAppDB.edmx</DependentUpon>
+    </Content>
+>>>>>>> Stashed changes
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
