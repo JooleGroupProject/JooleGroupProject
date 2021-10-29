@@ -134,20 +134,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductSummaryViewModel.cs" />
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JooleModel.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Images\JooleLogo.png" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Product\ProductSummary.css" />
@@ -156,16 +149,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\JooleModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\JooleModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
