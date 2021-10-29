@@ -52,6 +52,11 @@ namespace JooleGroupProject.Controllers
         {
             return View();
         }
-       
+        public ActionResult CategoryDropdown()
+        {
+            viewModel.Categories = this.catService.getCategory().ToList();
+            return View(viewModel);
+        }
+
     }
 }

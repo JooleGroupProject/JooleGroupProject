@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/JooleStyles/Login.css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -48,37 +48,25 @@
 
 
 </head>
-<body>
-    <div class="container-fluid" style="margin-left: 450px; margin-top: 200px;">
+<body class="backColor">
+    
+   
+        <div id="login-div">
 
-        <div class="imageDisplay">
-            <img height="200" width="400" src="@Url.Content("~/Images/Joole-Logo.jpg")" />
 
-        </div>
+            <img height="200" width="400" src="@Url.Content("~/Images/Joole-Logo.jpg")" /><br />
 
-        <span style="color: blue; font-weight: bold; font-size: 18pt;">Building Product Selection Platform</span>
-        <div>
+            <span style="color: blue; font-weight: bold; font-size: 18pt;">Building Product Selection Platform</span>
 
             @using (Html.BeginForm())
             {
+                Html.RenderPartial("CategoryDropdown");
 
-                <select id="catSelect">
-                    @foreach (var v in Model.Categories)
-                    {
-                        <option value="@v.Category_ID" onselect="">@v.Category_Name</option>
-                    }
-                </select>
                 Html.RenderPartial("ProductSearchBar");
 
                 <button type="submit" class="btn">Search</button>
             }
-
         </div>
-
-
-    </div>
-
-
 
 
 </body>
