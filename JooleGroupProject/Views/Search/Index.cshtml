@@ -9,13 +9,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="~/Content/Login.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @Styles.Render("~/Content/JooleStyles/Login.css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
     <script>
@@ -51,22 +54,25 @@
 <body class="backColor">
     
    
-        <div id="login-div">
+    <div id="productSearch-div">
 
+        <div align="center">
+            <img src="@Url.Content("~/Images/JooleLogo.png")" /><br />
 
-            <img height="200" width="400" src="@Url.Content("~/Images/Joole-Logo.jpg")" /><br />
+            <span align="center" style="font-size: 25px; font-weight:bold;">Building Product Selection Platform</span>
 
-            <span style="color: blue; font-weight: bold; font-size: 18pt;">Building Product Selection Platform</span>
-
-            @using (Html.BeginForm())
-            {
-                Html.RenderPartial("CategoryDropdown");
-
-                Html.RenderPartial("ProductSearchBar");
-
-                <button type="submit" class="btn">Search</button>
-            }
         </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            Html.RenderPartial("CategoryDropdown");
+
+            Html.RenderPartial("ProductSearchBar");
+
+            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+        }
+    </div>
+    
 
 
 </body>

@@ -135,7 +135,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
+    <Compile Include="Models\JooleModel.cs" />
+    <Compile Include="Models\JooleModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JooleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SearchModel.cs" />
 =======
     <Compile Include="Models\C__RefactorLog.cs">
@@ -192,13 +197,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\JooleStyles\Login.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
 <<<<<<< Updated upstream
     <Content Include="Images\Joole-Logo.jpg" />
+    <Content Include="Images\JooleLogo.png" />
+    <Content Include="Models\JooleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>JooleModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
 =======
@@ -254,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\JooleStyles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
