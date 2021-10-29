@@ -62,6 +62,7 @@
         <EntityType Name="tblSpecFilter">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="SubCategory_ID" />
           </Key>
           <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="SubCategory_ID" Type="int" Nullable="false" />
@@ -78,12 +79,13 @@
         </EntityType>
         <EntityType Name="tblTypeFilter">
           <Key>
-            <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Filter_ID" />
           </Key>
-          <Property Name="Property_ID" Type="int" Nullable="false" />
+          <Property Name="Filter_ID" Type="int" Nullable="false" />
           <Property Name="SubCategory_ID" Type="int" Nullable="false" />
           <Property Name="Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type_Options" Type="nvarchar" MaxLength="50" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -143,6 +145,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblSpecFilter_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblSpecFilter">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSpecFilter_tblSubCategory">
           <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
           <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
@@ -164,6 +178,18 @@
             </Principal>
             <Dependent Role="tblSubCategory">
               <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTypeFilter_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblTypeFilter" Type="Self.tblTypeFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblTypeFilter">
+              <PropertyRef Name="Property_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -206,6 +232,10 @@
             <End Role="tblProperty" EntitySet="tblProperty" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValue" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblSpecFilter_tblProperty" Association="Self.FK_tblSpecFilter_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperty" />
+            <End Role="tblSpecFilter" EntitySet="tblSpecFilter" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSpecFilter_tblSubCategory" Association="Self.FK_tblSpecFilter_tblSubCategory">
             <End Role="tblSubCategory" EntitySet="tblSubCategory" />
             <End Role="tblSpecFilter" EntitySet="tblSpecFilter" />
@@ -213,6 +243,10 @@
           <AssociationSet Name="FK_tblSubCategory_tblCategory" Association="Self.FK_tblSubCategory_tblCategory">
             <End Role="tblCategory" EntitySet="tblCategory" />
             <End Role="tblSubCategory" EntitySet="tblSubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTypeFilter_tblProperty" Association="Self.FK_tblTypeFilter_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperty" />
+            <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
           <AssociationSet Name="FK_tblTypeFilter_tblSubCategory" Association="Self.FK_tblTypeFilter_tblSubCategory">
             <End Role="tblSubCategory" EntitySet="tblSubCategory" />
@@ -274,6 +308,8 @@
           <Property Name="IsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsTechSpec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tblPropertyValues" Relationship="Self.FK_tblPropertyValue_tblProperty" FromRole="tblProperty" ToRole="tblPropertyValue" />
+          <NavigationProperty Name="tblSpecFilters" Relationship="Self.FK_tblSpecFilter_tblProperty" FromRole="tblProperty" ToRole="tblSpecFilter" />
+          <NavigationProperty Name="tblTypeFilters" Relationship="Self.FK_tblTypeFilter_tblProperty" FromRole="tblProperty" ToRole="tblTypeFilter" />
         </EntityType>
         <EntityType Name="tblPropertyValue">
           <Key>
@@ -289,11 +325,13 @@
         <EntityType Name="tblSpecFilter">
           <Key>
             <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="SubCategory_ID" />
           </Key>
           <Property Name="Property_ID" Type="Int32" Nullable="false" />
           <Property Name="SubCategory_ID" Type="Int32" Nullable="false" />
           <Property Name="Min_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Max_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblProperty" Relationship="Self.FK_tblSpecFilter_tblProperty" FromRole="tblSpecFilter" ToRole="tblProperty" />
           <NavigationProperty Name="tblSubCategory" Relationship="Self.FK_tblSpecFilter_tblSubCategory" FromRole="tblSpecFilter" ToRole="tblSubCategory" />
         </EntityType>
         <EntityType Name="tblSubCategory">
@@ -310,12 +348,14 @@
         </EntityType>
         <EntityType Name="tblTypeFilter">
           <Key>
-            <PropertyRef Name="Property_ID" />
+            <PropertyRef Name="Filter_ID" />
           </Key>
-          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="Filter_ID" Type="Int32" Nullable="false" />
           <Property Name="SubCategory_ID" Type="Int32" Nullable="false" />
           <Property Name="Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type_Options" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProperty" Relationship="Self.FK_tblTypeFilter_tblProperty" FromRole="tblTypeFilter" ToRole="tblProperty" />
           <NavigationProperty Name="tblSubCategory" Relationship="Self.FK_tblTypeFilter_tblSubCategory" FromRole="tblTypeFilter" ToRole="tblSubCategory" />
         </EntityType>
         <EntityType Name="tblUser">
@@ -388,6 +428,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblSpecFilter_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblSpecFilter">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTypeFilter_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
+          <End Role="tblTypeFilter" Type="Self.tblTypeFilter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Property_ID" />
+            </Principal>
+            <Dependent Role="tblTypeFilter">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSpecFilter_tblSubCategory">
           <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="1" />
           <End Role="tblSpecFilter" Type="Self.tblSpecFilter" Multiplicity="*" />
@@ -442,6 +506,14 @@
           <AssociationSet Name="FK_tblPropertyValue_tblProperty" Association="Self.FK_tblPropertyValue_tblProperty">
             <End Role="tblProperty" EntitySet="tblProperties" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpecFilter_tblProperty" Association="Self.FK_tblSpecFilter_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperties" />
+            <End Role="tblSpecFilter" EntitySet="tblSpecFilters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTypeFilter_tblProperty" Association="Self.FK_tblTypeFilter_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperties" />
+            <End Role="tblTypeFilter" EntitySet="tblTypeFilters" />
           </AssociationSet>
           <AssociationSet Name="FK_tblSpecFilter_tblSubCategory" Association="Self.FK_tblSpecFilter_tblSubCategory">
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
@@ -539,10 +611,11 @@
           <EntitySetMapping Name="tblTypeFilters">
             <EntityTypeMapping TypeName="JooleAppDBModel.tblTypeFilter">
               <MappingFragment StoreEntitySet="tblTypeFilter">
-                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Filter_ID" ColumnName="Filter_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
                 <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
                 <ScalarProperty Name="Type_Options" ColumnName="Type_Options" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

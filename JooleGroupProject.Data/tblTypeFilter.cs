@@ -14,11 +14,13 @@ namespace JooleGroupProject.Data
     
     public partial class tblTypeFilter
     {
-        public int Property_ID { get; set; }
+        public int Filter_ID { get; set; }
         public int SubCategory_ID { get; set; }
         public string Type_Name { get; set; }
         public string Type_Options { get; set; }
+        public int Property_ID { get; set; }
     
+        public virtual tblProperty tblProperty { get; set; }
         public virtual tblSubCategory tblSubCategory { get; set; }
     }
 }

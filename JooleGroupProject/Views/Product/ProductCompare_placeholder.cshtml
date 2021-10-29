@@ -42,8 +42,9 @@
         </tr>
         <tr>
             <td>TYPE</td>
-            @foreach (string propName in @Model[0].TypeProps.Keys)
-            {
+        </tr>
+        @foreach (string propName in @Model[0].TypeProps.Keys)
+        {
             <tr>
                 <td>@propName</td>
                 @foreach (ProductViewModel product in Model)
@@ -52,20 +53,19 @@
                 }
             </tr>
         }
-            </tr>
+        <tr>
+            <td>TECHNICAL SPECIFIC</td>
+        </tr>
+        @foreach (string propName in @Model[0].TechSpecsProps.Keys)
+        {
             <tr>
-                <td>TECHNICAL SPECIFIC</td>
-                @foreach (string propName in @Model[0].TechSpecsProps.Keys)
+                <td>@propName</td>
+                @foreach (ProductViewModel product in Model)
                 {
-                <tr>
-                    <td>@propName</td>
-                    @foreach (ProductViewModel product in Model)
-                    {
-                        <td>@product.TechSpecsProps[@propName]</td>
-                    }
-                </tr>
+                    <td>@product.TechSpecsProps[@propName]</td>
                 }
-                </tr>
-            </table>
-    </body>
+            </tr>
+        }
+    </table>
+</body>
 </html>

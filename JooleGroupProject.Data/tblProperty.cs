@@ -18,6 +18,8 @@ namespace JooleGroupProject.Data
         public tblProperty()
         {
             this.tblPropertyValues = new HashSet<tblPropertyValue>();
+            this.tblSpecFilters = new HashSet<tblSpecFilter>();
+            this.tblTypeFilters = new HashSet<tblTypeFilter>();
         }
     
         public int Property_ID { get; set; }
@@ -27,5 +29,9 @@ namespace JooleGroupProject.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSpecFilter> tblSpecFilters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTypeFilter> tblTypeFilters { get; set; }
     }
 }

@@ -47,8 +47,15 @@ namespace JooleGroupProject.Controllers
 
                 viewModel.Products.Add(productViewModel);
             }
-            Dictionary<string, List<string>> typeFilters = this.filterService.getTypeFiltersBySubCatId(subCatId);
-            viewModel.TypeFilters = typeFilters;
+            viewModel.TypeFilters = this.filterService.getTypeFiltersBySubCatId(subCatId);
+            //viewModel.TechSpecFilters = this.filterService.GetTechSpecFiltersBySubCatId(subCatId);
+            viewModel.TechSpecFilters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId).ToList();
+
+            IEnumerable<tblSpecFilter> filters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId);
+            foreach(tblSpecFilter f in filters)
+            {
+                System.Diagnostics.Debug.WriteLine(f.tblProperty.Property_ID);
+            }
 
             return View(viewModel);
         }
@@ -58,6 +65,15 @@ namespace JooleGroupProject.Controllers
             ProductViewModel viewModel = GenerateProductViewModel(productId);
 
             return View(viewModel);
+        }
+
+        public ActionResult SubmitCompare()
+        {
+            List<ProductViewModel> viewModels = new List<ProductViewModel>();
+            viewModels.Add(GenerateProductViewModel(1));
+            viewModels.Add(GenerateProductViewModel(2));
+            viewModels.Add(GenerateProductViewModel(3));
+            return View("ProductCompare_placeholder",viewModels);
         }
 
         public ActionResult ProductCompare_placeholder()

@@ -16,9 +16,11 @@
     @Scripts.Render("~/bundles/jquery")
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="~/Scripts/jQueryScripts/FilterItems.js"></script>
 </head>
 <body>
     <div class="container">
+        <h4>Category > SubCategory</h4>
         <div class="row">
             <div class="col-sm-4">
                 <ul class="list-group">
@@ -46,16 +48,16 @@
                             Product Type
                         </span>
                     <li class="list-group-item">
-                        <b>Model Year:</b> <input /> - <input />
+                        <b>Model Year:</b> <input class="modelInput" id="minModelInput"/> - <input class="modelInput" id="maxModelInput"/>
                         @foreach (KeyValuePair<string, List<string>> prop in Model.TypeFilters)
                         {
                             <div>
                                 <label>@prop.Key</label>
-                                <select>
-                                    <option></option>
+                                <select class="typePropertySelect">
+                                    <option value=""></option>
                                     @foreach (string propOption in prop.Value)
                                     {
-                                        <option>@propOption</option>
+                                        <option value="@propOption">@propOption</option>
                                     }
                                 </select>
                             </div>
@@ -67,22 +69,26 @@
                         </span>
                     </li>
                     <li class="list-group-item">
-                        <label for="customRange1" class="form-label">Airlfow(CFM)</label>
-                        <input type="number" id="min"/>
-                        <br />
-                        <div id="slider-range"></div>
-                        <br />
-                        <input type="number" id="max"/>
+                        @foreach (tblSpecFilter prop in Model.TechSpecFilters)
+                        {
+                            <label>@prop.tblProperty.Property_Name</label>
+                            <input type="number" id="minInput@(prop.Property_ID)" />
+                            <div id="slider@(prop.Property_ID)"></div>
+                            <input type="number" id="maxInput@(prop.Property_ID)" />
+                            <script type="text/javascript">
+                                createSlider(@prop.Property_ID, "@prop.Min_value", "@prop.Max_value")
+                            </script>
+                        }
                     </li>
                 </ul>
             </div>
             <div class="col-sm-8">
                 @foreach (ProductViewModel product in Model.Products)
                 {
-                    <div class="card">
+                    <div class="card productCard" id="card@(product.Product.Product_ID)">
                         <img class="card-img-top" src="#" alt="Product Image" />
                         <div class="card-body">
-                            
+
                             <h5><a href="ProductDetails_placeholder?productId=@product.Product.Product_ID">@product.Product.Product_Name</a></h5>
                             <h5>@product.Product.Series Series</h5>
                             <h5>@product.Product.Model</h5>
@@ -90,35 +96,20 @@
                             {
                                 <div>@typePropName: @product.TypeProps[typePropName]</div>
                             }
-                            @foreach (KeyValuePair<string, string> prop in product.TechSpecsProps)
+                            @foreach (tblSpecFilter prop in Model.TechSpecFilters)
                             {
-                                <div>@prop.Key : @prop.Value</div>
+                                <div>@prop.tblProperty.Property_Name : <span class="techSpecProperty" propId="@prop.tblProperty.Property_ID">@product.TechSpecsProps[@prop.tblProperty.Property_Name]</span></div>
                             }
-                            <input type="checkbox" /><label>Compare</label>
+                            <input type="checkbox" value="@product.Product.Product_ID" /><label>Compare</label>
                             <button class="btn btn-primary">Add to</button>
                         </div>
                     </div>
                 }
             </div>
-            @Html.ActionLink("Compare Products","ProductCompare_placeholder")
+            @Html.ActionLink("Compare Products", "ProductCompare_placeholder")
         </div>
     </div>
-
     <script>
-        $(function () {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 100,
-                values: [0, 100],
-                slide: function (event, ui) {
-                    $("#min").val(ui.values[0]);
-                    $("#max").val(ui.values[1])
-                }
-            });
-            $("#min").val($("#slider-range").slider("values", 0));
-            $("#max").val($("#slider-range").slider("values", 1));
-        });
     </script>
 </body>
 </html>
