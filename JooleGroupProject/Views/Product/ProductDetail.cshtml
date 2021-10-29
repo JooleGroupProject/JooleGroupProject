@@ -16,8 +16,20 @@
 
 <body>
 
-    <h2>Product Summary</h2>
+    <div id="MenuContainer">
+        <div id="Menu">
+            <a>@Html.ActionLink("Product Summary", "ProductSummary")</a>
+            <a>@Html.ActionLink("Product Detail", "ProductDetail")</a>
+            <a>Product Decumentation</a>
+            <a>Contact</a>
+        </div>
+    </div>
 
+
+
+    <h2 id="TitleColor">Product Summary</h2>
+
+    <p id="TableLine"></p>
 
     @{
         IEnumerable<tblProduct> product = ViewData["tblProducts"] as IEnumerable<tblProduct>;
@@ -41,7 +53,7 @@
 
                 @foreach (tblProduct tblproduct in product)
                 {
-                    <td>@tblproduct.tblManufacturer.Manufacturer_Name</td>
+                    <td id="Tabletd">@tblproduct.tblManufacturer.Manufacturer_Name</td>
                 }
 
             </tr>
@@ -51,7 +63,7 @@
 
                 @foreach (tblProduct tblproduct in product)
                 {
-                    <td>@tblproduct.Series</td>
+                    <td id="Tabletd">@tblproduct.Series</td>
                 }
             </tr>
 
@@ -60,7 +72,7 @@
 
                 @foreach (tblProduct tblproduct in product)
                 {
-                    <td>@tblproduct.Model</td>
+                    <td id="Tabletd">@tblproduct.Model</td>
                 }
             </tr>
 
@@ -68,14 +80,18 @@
 
     </div>
 
+
+
     <div id="TypeDIV">
-        <h5>Type</h5>
+
+        <p id="TableLine"></p>
+        <h5>TYPE</h5>
         <table id="TypeTable">
             <tr>
                 <th id="TableHeader">Use Type</th>
                 @foreach (tblPropertyValue pVal in UseType)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Tabletd">@pVal.Value</td>
                 }
             </tr>
 
@@ -83,20 +99,20 @@
                 <th id="TableHeader">Application</th>
                 @foreach (tblPropertyValue pVal in Application)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Tabletd">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
                 <th id="TableHeader">Mounting Location</th>
-                <td></td>
+                <td id="Tabletd"></td>
             </tr>
 
             <tr>
                 <th id="TableHeader">Accessories</th>
                 @foreach (tblPropertyValue pVal in Accessories)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Tabletd">@pVal.Value</td>
                 }
             </tr>
 
@@ -104,51 +120,58 @@
                 <th id="TableHeader">Model Year</th>
                 @foreach (tblProduct tblproduct in product)
                 {
-                    <td>@tblproduct.Model_Year</td>
+                    <td id="Tabletd">@tblproduct.Model_Year</td>
                 }
             </tr>
 
         </table>
     </div>
 
+    
     <div id="TechDIV">
+
+        <p id="TableLine"></p>
+
         <h5>TECHNICAL SPECIFICATIONS</h5>
-        <table id="TechTable">
-            <tr>
+        <table>
+            <tr id="TechTabletr">
                 <th id="TableHeader">Air Flow (CFM)</th>
                 @foreach (tblPropertyValue pVal in Airflow)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
                 <th id="TableHeader">Power (W)</th>
-                <th id="TableHeader">Min</th>
-                <th id="TableHeader">Max</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
                 @foreach (tblPropertyValue pVal in Power)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
-                <th id="TableHeader">Operating Voltage (VAC></th>
-                <th id="TableHeader">Min</th>
-                <th id="TableHeader">Max</th>
+                <th id="TableHeader">Operating Voltage (VAC)</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
                 @foreach (tblPropertyValue pVal in OperatingVoltage)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
                 <th id="TableHeader">Fan Speed (RPM)</th>
-                <th id="TableHeader">Min</th>
-                <th id="TableHeader">Max</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
                 @foreach (tblPropertyValue pVal in FanSpeed)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd">@pVal.Value</td>
                 }
 
             </tr>
@@ -157,34 +180,35 @@
                 <th id="TableHeader">Number of fan speeds</th>
                 @foreach (tblPropertyValue pVal in NumFanSpeed)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
-                <th id="TableHeader">Sound at max speed(dBA)</th>
+                <th id="TechTableHeader">Sound at max speed(dBA)</th>
                 @foreach (tblPropertyValue pVal in SoundAtMaxSpeed)
                 {
-                    <td>@pVal.Value</td>
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
                 }
             </tr>
 
             <tr>
                 <th id="TableHeader">Fan sweep diameter (in)</th>
-                <td></td>
+                <td id="Techtd" colspan="4"></td>
             </tr>
 
             <tr>
                 <th id="TableHeader">Height (in)</th>
-                <th id="TableHeader">Min</th>
-                <th id="TableHeader">Max</th>
-                <td></td>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
+                <td id="Techtd"></td>
 
             </tr>
 
             <tr>
                 <th id="TableHeader">Weight (lbs)</th>
-                <td></td>
+                <td id="Techtd" colspan="4"> </td>
             </tr>
         </table>
     </div>
