@@ -14,10 +14,11 @@ namespace JooleGP.DLL
     
     public partial class tblTypeFilter
     {
-        public int Property_ID { get; set; }
+        public int Filter_ID { get; set; }
         public int SubCategory_ID { get; set; }
         public string Type_Name { get; set; }
         public string Type_Options { get; set; }
+        public Nullable<int> Property_ID { get; set; }
     
         public virtual tblSubCategory tblSubCategory { get; set; }
     }
