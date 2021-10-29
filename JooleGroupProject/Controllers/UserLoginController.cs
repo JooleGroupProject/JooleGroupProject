@@ -30,7 +30,7 @@ namespace JooleGroupProject.Controllers
                 {
                     if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
                     {
-                        ViewBag.DuplicateMessage = "The User Name already exist!";
+                        ViewBag.Message = "The User Name already exist!";
                         return View("LoginPage",tUser);
                     }
                     else

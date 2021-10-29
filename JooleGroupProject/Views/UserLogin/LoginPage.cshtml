@@ -143,9 +143,18 @@
                                 <td style="font-weight: bold;">UserName:</td>
                                 <td>
 
-                                    @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { id = "txtEmail", placeholder = "User Name", required = "required" } })
+                                    @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { id = "txtName", placeholder = "User Name", required = "required" } })
                                     <br>@Html.ValidationMessageFor(userName => userName.User_Name, "", new { @class = "duplicate-danger" })
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <script type="text/javascript">
 
+                                                window.onload = function () {
+                                                    alert("@ViewBag.Message");
+                                                };
+                                        </script>
+
+                                    }
                                 </td>
                                 <td></td>
                             </tr>
@@ -153,7 +162,7 @@
                             <tr>
                                 <td style="font-weight: bold;">Email Address:</td>
                                 <td>
-                                    @Html.EditorFor(userName => userName.User_Email, new { htmlAttributes = new { id = "txtName", placeholder = "Email Id", required = "required" } })
+                                    @Html.EditorFor(userName => userName.User_Email, new { htmlAttributes = new { id = "txtEmail", placeholder = "Email Id", required = "required" } })
                                     <br>@Html.ValidationMessageFor(userName => userName.User_Email)
                                 </td>
 
