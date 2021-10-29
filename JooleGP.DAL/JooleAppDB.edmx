@@ -90,7 +90,7 @@
           <Key>
             <PropertyRef Name="User_ID" />
           </Key>
-          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="User_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Image" Type="nvarchar" MaxLength="50" />
@@ -324,7 +324,7 @@
           <Key>
             <PropertyRef Name="User_ID" />
           </Key>
-          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="User_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="User_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -414,7 +414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JooleAppDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JooleAppDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
           <EntitySet Name="tblManufacturers" EntityType="Self.tblManufacturer" />
@@ -459,7 +459,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JooleAppDBModelStoreContainer" CdmEntityContainer="JooleAppDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="JooleAppDBModelStoreContainer" CdmEntityContainer="JooleAppDBEntities">
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="JooleAppDBModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
