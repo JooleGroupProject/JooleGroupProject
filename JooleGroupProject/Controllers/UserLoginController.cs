@@ -45,8 +45,8 @@ namespace JooleGroupProject.Controllers
                     Session["User_Name"] = userDetail.User_Name;
                     Session["User_Email"] = userDetail.User_Email;
 
-                    var userName = Session["User_Name"];
-                    var userEmail = Session["User_Email"];
+                    //var userName = Session["User_Name"];
+                    //var userEmail = Session["User_Email"];
                     //return to searching page
                     return RedirectToAction("Index", "Home");
                 }
@@ -55,44 +55,75 @@ namespace JooleGroupProject.Controllers
 
         }
 
-
-        public ActionResult SignUpPage()
+        /*
+        public ActionResult Index()
         {
-            return View();
+            JooleAppDBEntities entities = new JooleAppDBEntities();
+            return View(entities.tblUsers.ToList());
         }
 
         [HttpPost]
-        public ActionResult SignUp(tblUser tUser)
+        public JsonResult CheckDuplicate(tblUser alluser)
         {
-            if (ModelState.IsValid)
+            try
             {
-                using (JooleAppDBEntities jdb = new JooleAppDBEntities())
+                using (JooleAppDBEntities db = new JooleAppDBEntities())
                 {
-                    if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
+                    List<tblUser> customers = db.tblUsers.Where(x => x.User_Name == alluser.User_Name || x.User_Email == alluser.User_Email).ToList();
+                    if (customers.Count >0)
                     {
-                        ViewBag.DuplicateMessage = "The User Name already exist!";
-                        return View("SignUpPage", tUser);
+                        TempData["Message"] = "<script>alert('The User Name already exist!');</script>";
+                        
                     }
-                    jdb.tblUsers.Add(tUser);
-                    jdb.SaveChanges();
+                    else
+                    {
+                        db.tblUsers.Add(alluser);
+                        db.SaveChanges();
+                    }
+
                 }
-                tUser = null;
-                ViewBag.SuccessMessage = "Registration Successful!";
             }
-            return View("SignUpPage", tUser);
-        }
-
-        public ActionResult SignUp(HttpPostedFileBase imgfile)
-        {
-            if (imgfile != null && imgfile.ContentLength > 0)
+            catch (Exception)
             {
-                string imgname = Path.GetFileName(imgfile.FileName);
-                string imgext = Path.GetExtension(imgname);
-                string imgpath = Path.Combine(Server.MapPath("~/Images"), imgname);
-                imgfile.SaveAs(imgpath);
 
             }
-            return View();
+            return Json(alluser);
         }
+        */
+        
+                [HttpPost]
+                public ActionResult SignUp(tblUser tUser)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        using (JooleAppDBEntities jdb = new JooleAppDBEntities())
+                        {
+                            if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
+                            {
+                                ViewBag.DuplicateMessage = "The User Name already exist!";
+                                return RedirectToAction("SignUp");
+                            }
+                            jdb.tblUsers.Add(tUser);
+                            jdb.SaveChanges();
+                        }
+                        tUser = null;
+                        ViewBag.SuccessMessage = "Registration Successful!";
+                    }
+                    return View("LoginPage",tUser);
+                }
+
+                public ActionResult SignUp(HttpPostedFileBase imgfile)
+                {
+                    if (imgfile != null && imgfile.ContentLength > 0)
+                    {
+                        string imgname = Path.GetFileName(imgfile.FileName);
+                        string imgext = Path.GetExtension(imgname);
+                        string imgpath = Path.Combine(Server.MapPath("~/Images"), imgname);
+                        imgfile.SaveAs(imgpath);
+
+                    }
+                    return View();
+                }
     }
+
 }
