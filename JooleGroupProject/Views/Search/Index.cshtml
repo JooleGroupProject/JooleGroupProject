@@ -26,7 +26,7 @@
                         url: "/Search/GetProdName",
                         type: "POST",
                         dataType: "json",
-                        data: { Prefix: request.term },
+                        data: { Prefix: request.term, catID: $("#catSelect").val() },
                         success: function (data) {
                             response($.map(data, function (item) {
                                 return { label: item.Product_Name, value: item.Product_Name };
@@ -65,7 +65,7 @@
                 <select id="catSelect">
                     @foreach (var v in Model.Categories)
                     {
-                        <option value="@v.Category_ID">@v.Category_Name</option>
+                        <option value="@v.Category_ID" onselect="">@v.Category_Name</option>
                     }
                 </select>
                 Html.RenderPartial("ProductSearchBar");

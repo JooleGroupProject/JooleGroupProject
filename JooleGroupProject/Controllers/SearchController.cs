@@ -24,24 +24,24 @@ namespace JooleGroupProject.Controllers
         }
         public ActionResult Index()
         {
-
             viewModel.Categories = this.catService.getCategory().ToList();
-            viewModel.CurrentList = this.catService.getProducts(1).ToList();
-          
 
                 return View(viewModel);
         }
     
         [HttpPost]
-        public JsonResult GetProdName(string Prefix)
+        public JsonResult GetProdName(string Prefix, int catID)
         {
-
-            var Countries = from c in this.catService.getProducts(1)
+            if(catID < 1)
+            {
+                catID = 1;
+            }
+            var Products = from c in this.catService.getProducts(catID)
                              where c.Product_Name.StartsWith(Prefix)
                              select new { c.Product_Name };
-            Console.WriteLine(Countries.ToString());
+            Console.WriteLine(Products.ToString());
     
-            return Json(Countries, JsonRequestBehavior.AllowGet);
+            return Json(Products, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public ActionResult Index(string CustomerName)
