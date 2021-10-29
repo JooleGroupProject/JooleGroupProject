@@ -1,0 +1,11 @@
+﻿@model JooleGroupProject.Models.JooleModel
+
+
+    <select class="categoryDropdown" id="catSelect" for="@Model.SearchView.Categories">
+        @foreach (var v in Model.SearchView.Categories)
+        {
+            <option value="@v.Category_ID">@v.Category_Name</option>
+        }
+    </select>
+    
+

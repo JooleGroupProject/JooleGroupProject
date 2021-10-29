@@ -1,4 +1,4 @@
-﻿@model JooleGroupProject.Models.SearchModel
+﻿@model JooleGroupProject.Models.JooleModel
 
 @{
     ViewBag.Title = "Index";
@@ -22,7 +22,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#Product_Name").autocomplete({
+            $("#ProductName").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: "/Search/GetProdName",

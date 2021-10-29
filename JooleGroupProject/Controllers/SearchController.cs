@@ -14,18 +14,20 @@ namespace JooleGroupProject.Controllers
     {
         private readonly CategoryService catService;
         public SearchModel viewModel;
+        public JooleModel mai;
         // GET: Search
 
         public SearchController()
         {
             catService = new CategoryService();
             viewModel = new SearchModel();
+            mai = new JooleModel();
         }
         public ActionResult Index()
         {
             viewModel.Categories = this.catService.getCategory().ToList();
-
-            return View(viewModel);
+            mai.SearchView = viewModel;
+            return View(mai);
         }
 
         [HttpPost]
@@ -45,7 +47,8 @@ namespace JooleGroupProject.Controllers
         [HttpPost]
         public ActionResult Index(string CustomerName)
         {
-            return View(viewModel);
+            mai.SearchView = viewModel;
+            return View(mai);
         }
         public ActionResult ProductSearchBar()
         {
@@ -54,7 +57,8 @@ namespace JooleGroupProject.Controllers
         public ActionResult CategoryDropdown()
         {
             viewModel.Categories = this.catService.getCategory().ToList();
-            return View(viewModel);
+            mai.SearchView = viewModel;
+            return View(mai);
         }
 
     }

@@ -13,26 +13,37 @@ namespace JooleGroupProject.Controllers
     {
         private readonly ProductService productService;
         private readonly PropertyValueService propertyValueService;
+        private readonly CategoryService catService;
         public SearchModel viewModel;
+        public JooleModel mai;
+            
 
         public ProductController()
         {
             this.productService = new ProductService();
+            this.catService = new CategoryService();
             this.propertyValueService = new PropertyValueService();
             this.viewModel = new SearchModel();
+            this.mai = new JooleModel();
         }
         // GET: Product
         public ActionResult Index()
         {
-
-            return View();
+            viewModel.Categories = this.catService.getCategory().ToList();
+            mai.SearchView = viewModel;
+            return View(mai);
         }
-
+        [HttpPost]
+        public ActionResult Index(string CustomerName)
+        {
+            mai.SearchView = viewModel;
+            return View(mai);
+        }
         public ActionResult ProductSummary()
         {            
             IEnumerable<tblProduct> products = this.productService.GetByProductsBySubCategory(1);
-            
-            return View(products);
+            mai.Products = products;
+            return View(mai);
         }
 
         public ActionResult ProductDetail(int id)
@@ -53,6 +64,30 @@ namespace JooleGroupProject.Controllers
             //ViewData["SearchBar"] = viewModel.autoComp;
             return View();
 
+        }
+        public ActionResult ProductSearchBar()
+        {
+            return View();
+        }
+        public ActionResult CategoryDropdown()
+        {
+            viewModel.Categories = this.catService.getCategory().ToList();
+            mai.SearchView = viewModel;
+            return View(mai);
+        }
+        [HttpPost]
+        public JsonResult GetProdName(string Prefix, int catID)
+        {
+            if (catID < 1)
+            {
+                catID = 1;
+            }
+            var Products = from c in this.catService.getProducts(catID)
+                           where c.Product_Name.StartsWith(Prefix)
+                           select new { c.Product_Name };
+            Console.WriteLine(Products.ToString());
+
+            return Json(Products, JsonRequestBehavior.AllowGet);
         }
 
     }
