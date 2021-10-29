@@ -12,9 +12,77 @@
     <title>Product Summary</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+    @*
+    <script>
+        $(document).ready(function () {
+            $("#Product_Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Search/GetProdName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, catID: $("#catSelect").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Product_Name, value: item.Product_Name };
+                            }));
+                        }
+                    });
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+    *@
 </head>
 
 <body>
+
+
+
+
+    @{
+        IEnumerable<tblProduct> product = ViewData["tblProducts"] as IEnumerable<tblProduct>;
+        IEnumerable<tblPropertyValue> UseType = ViewData["UseType"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Application = ViewData["Application"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Accessories = ViewData["Accessories"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Airflow = ViewData["Airflow"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Power = ViewData["Power"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> OperatingVoltage = ViewData["OperatingVoltage"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> FanSpeed = ViewData["FanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> NumFanSpeed = ViewData["NumFanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> SoundAtMaxSpeed = ViewData["SoundAtMaxSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblCategory> Dropdown = ViewData["Dropdown"] as IEnumerable<tblCategory>;
+        IEnumerable<tblCategory> SearchBar = ViewData["SearchBar"] as IEnumerable<tblCategory>;
+    }
+
+    @*
+
+        <img src="@Url.Content("~/Images/JooleLogo.png")" />
+
+        @using (Html.BeginForm())
+        {
+            <select class="categoryDropdown">
+
+                @foreach (tblCategory tblcategory in Dropdown)
+                {
+                    <option value="@tblcategory.Category_Name">@tblcategory.Category_Name</option>
+
+                }
+
+            </select>
+            <input class="editorSearchBar" type="text" for="@SearchBar" id="Product_Name" />
+            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+        }
+
+    *@
 
     <div id="MenuContainer">
         <div id="Menu">
@@ -31,19 +99,13 @@
 
     <p id="TableLine"></p>
 
-    @{
-        IEnumerable<tblProduct> product = ViewData["tblProducts"] as IEnumerable<tblProduct>;
-        IEnumerable<tblPropertyValue> UseType = ViewData["UseType"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> Application = ViewData["Application"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> Accessories = ViewData["Accessories"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> Airflow = ViewData["Airflow"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> Power = ViewData["Power"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> OperatingVoltage = ViewData["OperatingVoltage"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> FanSpeed = ViewData["FanSpeed"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> NumFanSpeed = ViewData["NumFanSpeed"] as IEnumerable<tblPropertyValue>;
-        IEnumerable<tblPropertyValue> SoundAtMaxSpeed = ViewData["SoundAtMaxSpeed"] as IEnumerable<tblPropertyValue>;
 
-    }
+
+
+
+
+
+
 
     <div id="DescriptionDIV">
         <h5>DESCRIPTION</h5>
@@ -127,7 +189,7 @@
         </table>
     </div>
 
-    
+
     <div id="TechDIV">
 
         <p id="TableLine"></p>

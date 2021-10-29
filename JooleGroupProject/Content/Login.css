@@ -1,0 +1,171 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border-radius: var(--border-redius);
+    
+}
+#login-div {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    max-width: 600px;
+    max-height: 500px;
+    border-radius: var(--border-redius);
+    left: 35%;
+    top: 10%;
+}
+#productSearch-div {
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    max-width: 800px;
+    max-height: 500px;
+    border-radius: var(--border-redius);
+    left: 35%;
+    top: 10%;
+}
+.signUp-div{
+    position: absolute;
+    top:10px;
+    right: 110px;
+}
+.signUp{
+    color:black;
+    font-size: 20px;
+}
+.signUpTable {
+    border-spacing: 50px;
+}
+.signUpBoard {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    max-width: 600px;
+    max-height: 800px;
+    left: 32%;
+    top: 5%;
+}
+#image-div {
+    position: center; 
+}
+
+.imgView {
+    background-color: #808080;
+    border-radius: 100% !important;
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+}
+
+
+
+.backColor {
+    background: #4682B4;
+    background: linear-gradient(to bottom, #4682B4, #ADD8E6, #FFFFFF);
+}
+.editorBar {
+    border-radius: 5px;
+    border:0;
+    height: 40px;
+    width: 550px;
+}
+.editorSearchBar {
+    border-radius: 5px;
+    border: 0;
+    height: 33px;
+    width: 550px;
+}
+.LoginButton {
+    position: relative;
+    border-radius: 5px;
+    border: 0;
+    height: 30px;
+    width: 100px;
+    right: 28px;
+    background-color: #4682B4;
+    color:white;
+}
+
+.categoryDropdown {
+    position: relative;
+    border-radius: 5px;
+    border: 0;
+    height: 30px;
+    width: 100px;
+    background-color: #4682B4;
+}
+
+.SignUpButton {
+    border-radius: 5px;
+    border: 0;
+    height: 30px;
+    width: 70px;
+    background-color: #4682B4;
+    color: white;
+}
+
+::placeholder {
+    padding-left: 10px;
+}
+
+
+
+
+
+
+
+
+.inner-addon {
+    position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+
+}
+
+/* align glyph */
+.left-addon .glyphicon {
+    left: 25px;
+}
+
+.right-addon .glyphicon {
+    right: 25px;
+}
+
+/* add padding  */
+.left-addon input {
+    padding-left: 80px;
+}
+
+.right-addon input {
+    padding-right: 80px;
+}
+
+
+.field-validation-error{
+    color: red;
+}
+
+.duplicate-danger{
+    color:red;
+}
+
+
+

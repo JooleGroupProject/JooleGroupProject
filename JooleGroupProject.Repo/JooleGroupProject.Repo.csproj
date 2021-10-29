@@ -43,6 +43,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="PropertyRepository.cs" />

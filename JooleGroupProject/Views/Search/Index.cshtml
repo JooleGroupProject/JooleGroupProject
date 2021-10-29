@@ -1,0 +1,78 @@
+﻿@model JooleGroupProject.Models.SearchModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+
+
+    <script>
+        $(document).ready(function () {
+            $("#Product_Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Search/GetProdName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, catID: $("#catSelect").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Product_Name, value: item.Product_Name };
+                            }));
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+</head>
+<body class="backColor">
+    
+   
+    <div id="productSearch-div">
+
+        <div align="center">
+            <img src="@Url.Content("~/Images/JooleLogo.png")" /><br />
+
+            <span align="center" style="font-size: 25px; font-weight:bold;">Building Product Selection Platform</span>
+
+        </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            Html.RenderPartial("CategoryDropdown");
+
+            Html.RenderPartial("ProductSearchBar");
+
+            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+        }
+    </div>
+    
+
+
+</body>
+</html>

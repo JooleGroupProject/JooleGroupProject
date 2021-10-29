@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using JooleGroupProject.Service;
 using JooleGroupProject.Data;
+using JooleGroupProject.Models;
 
 namespace JooleGroupProject.Controllers
 {
@@ -12,15 +13,18 @@ namespace JooleGroupProject.Controllers
     {
         private readonly ProductService productService;
         private readonly PropertyValueService propertyValueService;
+        public SearchModel viewModel;
 
         public ProductController()
         {
             this.productService = new ProductService();
             this.propertyValueService = new PropertyValueService();
+            this.viewModel = new SearchModel();
         }
         // GET: Product
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -43,12 +47,13 @@ namespace JooleGroupProject.Controllers
             ViewData["FanSpeed"] = propertyValueService.GetFanSpeedByProductId(id);
             ViewData["NumFanSpeed"] = propertyValueService.GetNumFanSpeedByProductId(id);
             ViewData["SoundAtMaxSpeed"] = propertyValueService.GetSoundAtMaxSpeedByProductId(id);
-
-
-
-
+            
+            //viewModel.Categories = this.catService.getCategory().ToList();
+            //ViewData["Dropdown"] = viewModel.Categories;
+            //ViewData["SearchBar"] = viewModel.autoComp;
             return View();
 
         }
+
     }
 }
