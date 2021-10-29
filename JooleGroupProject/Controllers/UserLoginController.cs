@@ -20,6 +20,10 @@ namespace JooleGroupProject.Controllers
         [HttpPost]
         public ActionResult Login(tblUser tUser)
         {
+            tblUser userDetail = null;
+
+            var inputUserName = tUser.User_Name.ToString();
+
             if (ModelState.IsValid)
             {
                 using (JooleAppDBEntities jdb = new JooleAppDBEntities())
@@ -29,44 +33,54 @@ namespace JooleGroupProject.Controllers
                         ViewBag.DuplicateMessage = "The User Name already exist!";
                         return View("LoginPage",tUser);
                     }
-                    jdb.tblUsers.Add(tUser);
-                    jdb.SaveChanges();
-                }
-                tUser = null;
-                ViewBag.SuccessMessage = "Registration Successful!";
-            }
+                    else
+                    {
+                        jdb.tblUsers.Add(tUser);
+                        jdb.SaveChanges();
+                        ViewBag.SuccessMessage = "Registration Successful!";
+                        
+                    }
+                    
+                    if (inputUserName.Contains("@"))
+                    {
+                        tUser.User_Email = inputUserName;
+                        userDetail = jdb.tblUsers.Where(userLogin => userLogin.User_Email == tUser.User_Email && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
+                    }
+                    else
+                    {
+                        userDetail = jdb.tblUsers.Where(userLogin => userLogin.User_Name == inputUserName && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
+                    }
 
+                    if (userDetail == null)
+                    {
+                        tUser.LoginErrorMessage = "Wrong User Name/Email or Password!";
+                        return View("LoginPage", tUser);
+                    }
+                    else
+                    {
+                        Session["User_Name"] = userDetail.User_Name;
+                        Session["User_Email"] = userDetail.User_Email;
+
+                        //var userName = Session["User_Name"];
+                        //var userEmail = Session["User_Email"];
+                        //return to searching page
+                        return View("LoginPage", tUser);
+                    }
+                }
+
+                //Session["User_Name"] = tUser.User_Name;
+                //tUser = null;
+
+            }
+                return RedirectToAction("Index", "Home");
+
+/*
             using (JooleAppDBEntities db = new JooleAppDBEntities())
             {
-                tblUser userDetail = null;
-                var inputUserName = tUser.User_Name.ToString();
+                
 
-                if (inputUserName.Contains("@"))
-                {
-                    tUser.User_Email = inputUserName;
-                    userDetail = db.tblUsers.Where(userLogin => userLogin.User_Email == tUser.User_Email && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
-                }
-                else
-                {
-                    userDetail = db.tblUsers.Where(userLogin => userLogin.User_Name == inputUserName && userLogin.User_Password == tUser.User_Password).FirstOrDefault();
-                }
-
-                if (userDetail == null)
-                {
-                    tUser.LoginErrorMessage = "Wrong User Name/Email or Password!";
-                    return View("LoginPage", tUser);
-                }
-                else
-                {
-                    Session["User_Name"] = userDetail.User_Name;
-                    Session["User_Email"] = userDetail.User_Email;
-
-                    //var userName = Session["User_Name"];
-                    //var userEmail = Session["User_Email"];
-                    //return to searching page
-                    return RedirectToAction("Index", "Home");
-                }
-            }
+                
+            }*/
 
             /*
             public ActionResult Index()

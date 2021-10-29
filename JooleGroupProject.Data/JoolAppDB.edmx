@@ -88,7 +88,7 @@
           <Key>
             <PropertyRef Name="User_ID" />
           </Key>
-          <Property Name="User_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="User_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Image" Type="nvarchar" MaxLength="50" />
