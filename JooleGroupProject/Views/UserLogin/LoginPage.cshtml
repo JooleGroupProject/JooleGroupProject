@@ -105,7 +105,7 @@
                     <button data-dismiss="modal" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="modal-title" style="font-weight: bold;">Register as User</div>
                 </div>
-                    @using (Html.BeginForm("SignUp", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="modal-body">
                             <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -199,7 +199,7 @@
                             </div>
 
                         <div class="modal-footer">
-                            <input class="SignUpButton" id="Submit" type="submit" value="SignUp" />
+                            <input class="SignUpButton" id="submitButton" type="submit" value="SignUp" />
                         </div>
                     }
             </div>
