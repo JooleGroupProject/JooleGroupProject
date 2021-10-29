@@ -112,7 +112,7 @@ namespace JooleGroupProject.Controllers
                     return View("LoginPage",tUser);
                 }
 
-                public ActionResult SignUp(HttpPostedFileBase imgfile)
+             public ActionResult SignUp(HttpPostedFileBase imgfile)
                 {
                     if (imgfile != null && imgfile.ContentLength > 0)
                     {
@@ -122,7 +122,7 @@ namespace JooleGroupProject.Controllers
                         imgfile.SaveAs(imgpath);
 
                     }
-                    return View();
+                    return View("LoginPage");
                 }
     }
 
