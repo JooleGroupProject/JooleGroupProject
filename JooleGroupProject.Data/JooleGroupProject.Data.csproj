@@ -37,12 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="JooleModel.edmx">
+    <EntityDeploy Include="JoolAppDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JooleModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>JoolAppDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="JooleModel.edmx.diagram">
-      <DependentUpon>JooleModel.edmx</DependentUpon>
+    <None Include="JoolAppDB.edmx.diagram">
+      <DependentUpon>JoolAppDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -65,61 +65,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleModel.Context.cs">
+    <Compile Include="JoolAppDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.Context.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleModel.cs">
+    <Compile Include="JoolAppDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="JooleModel.Designer.cs">
+    <Compile Include="JoolAppDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
+      <DependentUpon>JoolAppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="tblCategory.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblManufacturer.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProduct.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProperty.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPropertyValue.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSpecFilter.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSubCategory.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTypeFilter.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUser.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
+      <DependentUpon>JoolAppDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JooleModel.Context.tt">
+    <Content Include="JoolAppDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
+      <DependentUpon>JoolAppDB.edmx</DependentUpon>
+      <LastGenOutput>JoolAppDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="JooleModel.tt">
+    <Content Include="JoolAppDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.cs</LastGenOutput>
+      <DependentUpon>JoolAppDB.edmx</DependentUpon>
+      <LastGenOutput>JoolAppDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,10 +5,11 @@ var previewimg = function (event) {
 };
 
 
-
+/*
 $(document).ready(function () {
     $("#submitButton").on("click", function () {
         alert('It`s Duplicate User Name');
     });
 
 });
+*/

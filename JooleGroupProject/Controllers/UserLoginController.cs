@@ -27,7 +27,7 @@ namespace JooleGroupProject.Controllers
                     if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
                     {
                         ViewBag.DuplicateMessage = "The User Name already exist!";
-                        return RedirectToAction("LoginPage", tUser);
+                        return View("LoginPage",tUser);
                     }
                     jdb.tblUsers.Add(tUser);
                     jdb.SaveChanges();
@@ -135,7 +135,7 @@ namespace JooleGroupProject.Controllers
                         imgfile.SaveAs(imgpath);
 
                     }
-                    return View();
+                    return View();*/
                 }
     }
 

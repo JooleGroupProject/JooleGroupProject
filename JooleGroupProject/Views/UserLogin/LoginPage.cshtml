@@ -97,7 +97,7 @@
     </div>
 
     <!--SignUp-->
-    
+
     <div class="modal fade SignUpPageM">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -105,107 +105,111 @@
                     <button data-dismiss="modal" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="modal-title" style="font-weight: bold;">Register as User</div>
                 </div>
-                    @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        <div class="modal-body">
-                            <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td></td>
-                                    <td style="font-weight: bold;">Image Preview</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><br /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><img class="imgView" id="imgpreview"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><br /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><input type="file" name="imgfile" onchange="previewimg(event)" /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><br /></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: bold;">UserName:</td>
-                                    <td>
+                @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body">
+                        <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td></td>
+                                <td style="font-weight: bold;">Image Preview</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><img class="imgView" id="imgpreview"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="file" name="imgfile" onchange="previewimg(event)" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">UserName:</td>
+                                <td>
 
-                                        @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { id = "txtEmail", placeholder = "User Name", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userName => userName.User_Name, "", new { @class = "duplicate-danger" })
-                                        
-                                    </td>
-                                    <td></td>
-                                </tr>
+                                    @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { id = "txtEmail", placeholder = "User Name", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userName => userName.User_Name, "", new { @class = "duplicate-danger" })
 
-                                <tr>
-                                    <td style="font-weight: bold;">Email Address:</td>
-                                    <td>
-                                        @Html.EditorFor(userName => userName.User_Email, new { htmlAttributes = new {id= "txtName", placeholder = "Email Id", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userName => userName.User_Email)
-                                    </td>
+                                </td>
+                                <td></td>
+                            </tr>
 
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Email Address:</td>
+                                <td>
+                                    @Html.EditorFor(userName => userName.User_Email, new { htmlAttributes = new { id = "txtName", placeholder = "Email Id", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userName => userName.User_Email)
+                                </td>
 
-                                <tr>
-                                    <td style="font-weight: bold;">Password:</td>
-                                    <td>
-                                        @Html.EditorFor(userName => userName.User_Password, new { htmlAttributes = new {  placeholder = "Password", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userName => userName.User_Password)
-                                    </td>
-                                    <td></td>
-                                </tr>
+                                <td></td>
+                            </tr>
 
-                                <tr>
-                                    <td style="font-weight: bold;">Confirm Password:</td>
-                                    <td>
-                                        @Html.EditorFor(userName => userName.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
-                                        <br>@Html.ValidationMessageFor(userName => userName.ConfirmPassword)
-                                    </td>
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Password:</td>
+                                <td>
+                                    @Html.EditorFor(userName => userName.User_Password, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userName => userName.User_Password)
+                                </td>
+                                <td></td>
+                            </tr>
 
-                                <tr>
-                                    <td></td>
-                                    <td style="color:red;font-size:20px;">
-                                        @ViewBag.SuccessMessage
-                                    </td>
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Confirm Password:</td>
+                                <td>
+                                    @Html.EditorFor(userName => userName.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userName => userName.ConfirmPassword)
+                                </td>
+                                <td></td>
+                            </tr>
 
-                                <tr>
-                                    <td></td>
-                                    <td style="color:red;font-size:20px;">
-                                        @ViewBag.DuplicateMessage
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                
-                            </table>
+                            <tr>
+                                <td></td>
+                                <td style="color:red;font-size:20px;">
+                                    @ViewBag.SuccessMessage
+                                </td>
+                                <td></td>
+                            </tr>
 
-                            </div>
+                            <tr>
+                                <td></td>
+                                <td style="color:red;font-size:20px;">
+                                    @ViewBag.DuplicateMessage
+                                </td>
+                                <td></td>
+                            </tr>
 
-                        <div class="modal-footer">
-                            <input class="SignUpButton" id="submitButton" type="submit" value="SignUp" />
-                        </div>
-                    }
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <input class="SignUpButton" id="submitButton" type="submit" value="SignUp" />
+                    </div>
+                }
             </div>
         </div>
 
     </div>
 
 </body>
-    </html>
+</html>
+
+
+
+
