@@ -60,13 +60,39 @@ namespace JooleGroupProject.Controllers
             return View(viewModel);
         }
 
-        public ActionResult ProductCompare_placeholder()
+        public ActionResult ProductCompare_placeholder(List<int> product_IDS)
         {
+            string errorMessage = "Nothing Selected to compare";
+            ViewData["errorMessage"] = errorMessage;
+         
+
+         
             List<ProductViewModel> viewModels = new List<ProductViewModel>();
-            viewModels.Add(GenerateProductViewModel(1));
-            viewModels.Add(GenerateProductViewModel(2));
-            viewModels.Add(GenerateProductViewModel(3));
-            return View(viewModels);
+
+            if (Request.Form["checkedProduct"] != null)
+            {
+
+                //product_IDS.Add(Int32.Parse(Request.Form.GetValues("checkedProduct")));
+                foreach (var i in product_IDS)
+                {
+                    
+                    viewModels.Add(GenerateProductViewModel(i));
+                  
+                    
+                }
+
+                return View("ProductCompare_placeholder", viewModels);
+
+
+            }
+            else
+            {
+                
+                return RedirectToAction("ProductSummary",product_IDS);
+            }
+
         }
+
+      
     }
 }

@@ -198,6 +198,10 @@
       <Project>{82f3a0e7-e1e6-4ace-a335-d0424c93555c}</Project>
       <Name>JooleGroupProject.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JooleGroupProject.Repo\JooleGroupProject.Repo.csproj">
+      <Project>{1f8d8c15-f7ea-4ddf-8632-88a1ff9eb7a6}</Project>
+      <Name>JooleGroupProject.Repo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JooleGroupProject.Service\JooleGroupProject.Service.csproj">
       <Project>{0bb4c2e3-d864-4c10-8f55-27c42d7d8a00}</Project>
       <Name>JooleGroupProject.Service</Name>

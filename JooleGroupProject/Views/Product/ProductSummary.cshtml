@@ -16,6 +16,8 @@
     @Scripts.Render("~/bundles/jquery")
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -94,13 +96,13 @@
                             {
                                 <div>@prop.Key : @prop.Value</div>
                             }
-                            <input type="checkbox" /><label>Compare</label>
+                            <input type="checkbox" name="checkedProduct" value="@product.Product.Product_ID" /><label>Compare</label>
                             <button class="btn btn-primary">Add to</button>
                         </div>
                     </div>
                 }
             </div>
-            @Html.ActionLink("Compare Products","ProductCompare_placeholder")
+            @Html.ActionLink("Compare Products","ProductCompare_placeholder", "", new { @class = "compareProduct" })
         </div>
     </div>
 
@@ -119,6 +121,28 @@
             $("#min").val($("#slider-range").slider("values", 0));
             $("#max").val($("#slider-range").slider("values", 1));
         });
+
+        $(document).ready(function () {
+            $('.compareProduct').on('click', function () {
+                var fav = [];
+                $('input:checked').each(function () {
+
+                    fav.push($(this).attr("value"));
+                });
+                $.ajax({
+                    url: "/Product/ProductCompare_placeholder",
+                    type: "POST",
+                    data: { product_IDS: fav },
+                    dataType: "json",
+                    traditional: true,
+                    success: function () {
+                        alert("ajax request to server succeed",fav);
+                    }
+                });
+            });
+        });
+
+
     </script>
 </body>
 </html>
