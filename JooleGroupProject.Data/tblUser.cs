@@ -12,6 +12,7 @@ namespace JooleGroupProject.Data
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     public partial class tblUser
     {
@@ -28,5 +29,7 @@ namespace JooleGroupProject.Data
         [Compare("User_Password", ErrorMessage = "Confirm Password Does Not Match!")]
         public string ConfirmPassword { get; set; }
         public string LoginErrorMessage { get; set; }
+        public HttpPostedFileBase Imgfile { get; set; }
+        //public HttpPostedFileWrapper ImageFile { get; set; }
     }
 }

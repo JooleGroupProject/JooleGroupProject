@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using JooleGroupProject.Data;
 
 
+
 namespace JooleGroupProject.Controllers
 {
     public class UserLoginController : Controller
@@ -17,6 +18,7 @@ namespace JooleGroupProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(tblUser tUser)
         {
@@ -28,6 +30,7 @@ namespace JooleGroupProject.Controllers
             {
                 using (JooleAppDBEntities jdb = new JooleAppDBEntities())
                 {
+                    //SignUp
                     if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
                     {
                         ViewBag.Message = "The User Name already exist!";
@@ -38,9 +41,9 @@ namespace JooleGroupProject.Controllers
                         jdb.tblUsers.Add(tUser);
                         jdb.SaveChanges();
                         ViewBag.SuccessMessage = "Registration Successful!";
-                        
+                                             
                     }
-                    
+                    //Login
                     if (inputUserName.Contains("@"))
                     {
                         tUser.User_Email = inputUserName;
@@ -58,99 +61,27 @@ namespace JooleGroupProject.Controllers
                     }
                     else
                     {
+                        HttpPostedFileBase file = Request.Files["Imgfile"];
+                        if (file != null)
+                        {
+                            string fileName = Path.GetFileNameWithoutExtension(tUser.Imgfile.FileName);
+                            string extension = Path.GetExtension(tUser.Imgfile.FileName);
+                            fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                            tUser.User_Image = fileName;
+                            tUser.Imgfile.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
+                            jdb.tblUsers.Add(tUser);
+                            jdb.SaveChanges();
+                        }
                         Session["User_Name"] = userDetail.User_Name;
                         Session["User_Email"] = userDetail.User_Email;
 
-                        //var userName = Session["User_Name"];
-                        //var userEmail = Session["User_Email"];
-                        //return to searching page
                         return View("LoginPage", tUser);
                     }
                 }
-
-                //Session["User_Name"] = tUser.User_Name;
-                //tUser = null;
-
             }
+                //return to product search
                 return RedirectToAction("Index", "Home");
-
-/*
-            using (JooleAppDBEntities db = new JooleAppDBEntities())
-            {
-                
-
-                
-            }*/
-
-            /*
-            public ActionResult Index()
-            {
-                JooleAppDBEntities entities = new JooleAppDBEntities();
-                return View(entities.tblUsers.ToList());
-            }
-
-            [HttpPost]
-            public JsonResult CheckDuplicate(tblUser alluser)
-            {
-                try
-                {
-                    using (JooleAppDBEntities db = new JooleAppDBEntities())
-                    {
-                        List<tblUser> customers = db.tblUsers.Where(x => x.User_Name == alluser.User_Name || x.User_Email == alluser.User_Email).ToList();
-                        if (customers.Count >0)
-                        {
-                            TempData["Message"] = "<script>alert('The User Name already exist!');</script>";
-
-                        }
-                        else
-                        {
-                            db.tblUsers.Add(alluser);
-                            db.SaveChanges();
-                        }
-
-                    }
-                }
-                catch (Exception)
-                {
-
-                }
-                return Json(alluser);
-            }
-
-
-                    [HttpPost]
-                    public ActionResult SignUp(tblUser tUser)
-                    {
-                        if (ModelState.IsValid)
-                        {
-                            using (JooleAppDBEntities jdb = new JooleAppDBEntities())
-                            {
-                                if (jdb.tblUsers.Any(userName => userName.User_Name == tUser.User_Name))
-                                {
-                                    ViewBag.DuplicateMessage = "The User Name already exist!";
-                                    return View("LoginPage");
-                                }
-                                jdb.tblUsers.Add(tUser);
-                                jdb.SaveChanges();
-                            }
-                            tUser = null;
-                            ViewBag.SuccessMessage = "Registration Successful!";
-                        }
-                        return View("LoginPage",tUser);
-                    }
-
-                public ActionResult SignUp(HttpPostedFileBase imgfile)
-                {
-                    if (imgfile != null && imgfile.ContentLength > 0)
-                    {
-                        string imgname = Path.GetFileName(imgfile.FileName);
-                        string imgext = Path.GetExtension(imgname);
-                        string imgpath = Path.Combine(Server.MapPath("~/Images"), imgname);
-                        imgfile.SaveAs(imgpath);
-
-                    }
-                    return View();*/
-                }
+        }
     }
 
 }

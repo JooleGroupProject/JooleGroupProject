@@ -27,7 +27,7 @@
 
     <div id="login-div">
 
-        @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post))
+        @using (Html.BeginForm("Login", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -97,7 +97,7 @@
     </div>
 
     <!--SignUp-->
-
+    
     <div class="modal fade SignUpPageM">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -131,7 +131,9 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><input type="file" name="imgfile" onchange="previewimg(event)" /></td>
+                                <td>
+                                    <input type="file" id="Imgfiles" name="Imgfile" onchange="previewimg(event)"  />
+                                </td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -148,12 +150,20 @@
                                     @if (ViewBag.Message != null)
                                     {
                                         <script type="text/javascript">
-
                                                 window.onload = function () {
                                                     alert("@ViewBag.Message");
                                                 };
                                         </script>
 
+                                    }
+                                    else if(ViewBag.SuccessMessage != null)
+                                    {
+                                        <script type="text/javascript">
+                                                window.onload = function () {
+                                                    alert("@ViewBag.SuccessMessage");
+                                                };
+                                        </script>
+                                        
                                     }
                                 </td>
                                 <td></td>
@@ -186,29 +196,12 @@
                                 </td>
                                 <td></td>
                             </tr>
-
-                            <tr>
-                                <td></td>
-                                <td style="color:red;font-size:20px;">
-                                    @ViewBag.SuccessMessage
-                                </td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <td></td>
-                                <td style="color:red;font-size:20px;">
-                                    @ViewBag.DuplicateMessage
-                                </td>
-                                <td></td>
-                            </tr>
-
                         </table>
 
                     </div>
 
                     <div class="modal-footer">
-                        <input class="SignUpButton" id="submitButton" type="submit" value="SignUp" />
+                        <input class="SignUpButton" id="submitButton"  type="submit" value="SignUp" />
                     </div>
                 }
             </div>
