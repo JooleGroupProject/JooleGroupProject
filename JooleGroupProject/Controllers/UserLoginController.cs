@@ -62,7 +62,7 @@ namespace JooleGroupProject.Controllers
                     else
                     {
                         HttpPostedFileBase file = Request.Files["Imgfile"];
-                        if (file != null)
+                        if (file != null && file.ContentLength !=0)
                         {
                             string fileName = Path.GetFileNameWithoutExtension(tUser.Imgfile.FileName);
                             string extension = Path.GetExtension(tUser.Imgfile.FileName);
