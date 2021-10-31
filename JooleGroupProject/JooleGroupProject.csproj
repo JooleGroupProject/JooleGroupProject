@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JooleModel.cs" />
     <Compile Include="Models\ProductSummaryViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
@@ -184,6 +185,9 @@
     <Content Include="Views\Shared\CategoryDropdown.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\ProductSearchBar.cshtml" />
+    <Content Include="Views\ProductSearchBar.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\CategoryDropdown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

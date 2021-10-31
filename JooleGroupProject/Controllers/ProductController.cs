@@ -19,7 +19,7 @@ namespace JooleGroupProject.Controllers
         private readonly CategoryService catService;
         public SearchModel viewModel;
         public JooleModel mai;
-            
+
 
         private ProductViewModel GenerateProductViewModel(int productId)
         {
@@ -59,7 +59,7 @@ namespace JooleGroupProject.Controllers
         {
             ProductSummaryViewModel viewModel = new ProductSummaryViewModel();
             IEnumerable<tblProduct> products = this.productService.GetByProductsBySubCategory(subCatId);
-            foreach(tblProduct p in products)
+            foreach (tblProduct p in products)
             {
                 ProductViewModel productViewModel = GenerateProductViewModel(p.Product_ID);
 
@@ -70,7 +70,7 @@ namespace JooleGroupProject.Controllers
             viewModel.TechSpecFilters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId).ToList();
 
             IEnumerable<tblSpecFilter> filters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId);
-            foreach(tblSpecFilter f in filters)
+            foreach (tblSpecFilter f in filters)
             {
                 System.Diagnostics.Debug.WriteLine(f.tblProperty.Property_ID);
             }
@@ -91,7 +91,7 @@ namespace JooleGroupProject.Controllers
             viewModels.Add(GenerateProductViewModel(1));
             viewModels.Add(GenerateProductViewModel(2));
             viewModels.Add(GenerateProductViewModel(3));
-            return View("ProductCompare_placeholder",viewModels);
+            return View("ProductCompare_placeholder", viewModels);
         }
 
         public ActionResult ProductCompare_placeholder()
@@ -101,11 +101,6 @@ namespace JooleGroupProject.Controllers
             viewModels.Add(GenerateProductViewModel(2));
             viewModels.Add(GenerateProductViewModel(3));
             return View(viewModels);
-        public ActionResult ProductSummary()
-        {            
-            IEnumerable<tblProduct> products = this.productService.GetByProductsBySubCategory(1);
-            mai.Products = products;
-            return View(mai);
         }
 
         public ActionResult ProductDetail(int id)
@@ -120,7 +115,7 @@ namespace JooleGroupProject.Controllers
             ViewData["FanSpeed"] = propertyValueService.GetFanSpeedByProductId(id);
             ViewData["NumFanSpeed"] = propertyValueService.GetNumFanSpeedByProductId(id);
             ViewData["SoundAtMaxSpeed"] = propertyValueService.GetSoundAtMaxSpeedByProductId(id);
-            
+
             //viewModel.Categories = this.catService.getCategory().ToList();
             //ViewData["Dropdown"] = viewModel.Categories;
             //ViewData["SearchBar"] = viewModel.autoComp;

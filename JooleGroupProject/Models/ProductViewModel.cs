@@ -19,11 +19,5 @@ namespace JooleGroupProject.Models
             TechSpecsProps = new Dictionary<string, string>();
             TypeProps = new Dictionary<string, string>();
         }
-
-        public ProductViewModel()
-        {
-            this.Product = new tblProduct();
-            this.TechSpecsProps = new Dictionary<string, string>();
-        }
     }
 }
