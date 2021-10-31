@@ -12,7 +12,7 @@ namespace JooleGroupProject.Service
     {
         private ProductRepository productRepository;
 
-        public ProductService(/*Repository<tblProduct> productRepository*/)
+        public ProductService()
         {
             this.productRepository = new ProductRepository();
         }

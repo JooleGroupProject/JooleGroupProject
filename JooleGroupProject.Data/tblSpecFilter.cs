@@ -19,6 +19,7 @@ namespace JooleGroupProject.Data
         public string Min_value { get; set; }
         public string Max_value { get; set; }
     
+        public virtual tblProperty tblProperty { get; set; }
         public virtual tblSubCategory tblSubCategory { get; set; }
     }
 }

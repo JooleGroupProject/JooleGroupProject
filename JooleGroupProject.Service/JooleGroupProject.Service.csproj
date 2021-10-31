@@ -43,6 +43,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="PropertyValueService.cs" />
     <Compile Include="ProductService.cs" />

@@ -8,7 +8,7 @@ using JooleGroupProject.Repo;
 
 namespace JooleGroupProject.Service
 {
-    class PropertyService
+    public class PropertyService
     {
         PropertyValueRepository propValueRepo;
         PropertyRepository propRepo;
@@ -34,6 +34,16 @@ namespace JooleGroupProject.Service
                 }
             }
             return properties;
+        }
+
+        public Dictionary<string, string> GetTechSpecs(int productId)
+        {
+            return this.propValueRepo.GetTechSpecProperties(productId);            
+        }
+
+        public Dictionary<string, string> GetTypeProps(int productId)
+        {
+            return this.propValueRepo.GetTypeProperties(productId);
         }
     }
 }

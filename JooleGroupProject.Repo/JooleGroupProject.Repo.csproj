@@ -49,6 +49,8 @@
     <Compile Include="PropertyRepository.cs" />
     <Compile Include="PropertyValueRepository.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="TechSpecFilterRepository.cs" />
+    <Compile Include="TypeFilterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
