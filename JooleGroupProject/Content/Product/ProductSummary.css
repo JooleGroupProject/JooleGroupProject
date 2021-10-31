@@ -1,1 +1,17 @@
-﻿
+﻿.productCard {
+    display: inline;
+    max-width: 200px;
+}
+
+.techSpecSlider{
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.clearButton{
+    margin-left:10px;
+}
+
+img{
+    max-height: 100px;
+}

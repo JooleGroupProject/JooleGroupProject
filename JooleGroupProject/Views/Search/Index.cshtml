@@ -17,6 +17,7 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
     
 
 
@@ -62,13 +63,13 @@
 
         </div>
         <br />
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("SubmitSearch", "Search"))
         {
             Html.RenderPartial("CategoryDropdown");
 
             Html.RenderPartial("ProductSearchBar");
-
-            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+            @*<input class="editorSearchBar" type="text" name="searchBar"  id="Product_Name" />*@
+            <button onclick="location.href='<%: Url.Action("SubmitSearch","Search") %'" type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
         }
     </div>
     

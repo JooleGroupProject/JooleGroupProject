@@ -1,0 +1,88 @@
+﻿body {
+}
+
+#MenuContainer {
+    background-color:#e8e8e8;
+}
+
+#Menu {
+    display: inline-flex;
+    justify-content: space-between;
+    column-gap:20px;
+    padding: 20px 0;
+    
+}
+
+#TitleColor {
+    color: #3333ff;
+}
+
+#TableLine {
+    position: absolute;
+    width:550px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #e0e0eb;
+}
+
+#Tabletd {
+    width: 390px;
+    height: 30px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #e0e0eb;
+    border-right: none;
+}
+
+#Techtd {
+    width: 75px;
+    height: 30px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #e0e0eb;
+    border-right: none;
+}
+
+
+#DescriptionDIV {
+    width: 50%;
+    float: left;
+}
+
+#TypeDIV {
+    display:inline-block;
+    margin-left: 1px;
+    margin-top: 30px;
+    width: 50%;
+    height: 300px;
+}
+
+#TechDIV {
+    width: 50%;
+    float: right;
+    margin-top:-456px;
+}
+
+
+#TechTabletr {
+    height:33px;
+}
+
+#TableHeader {
+    background-color: #DCDCDC;
+    width: 30%;
+}
+
+#TechTableHeader {
+    background-color: #DCDCDC;
+    width: 35%;
+}
+
+#MinMaxHeader {
+    background-color: #DCDCDC;
+    width: 15%;
+}
+
+#MinVal {
+    width: 15%;
+}

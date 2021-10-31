@@ -22,8 +22,11 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="~/Content/Product/ProductSummary.css" />
     @*<script>
+
             $(document).ready(function () {
                 $("#ProductName").autocomplete({
                     source: function (request, response) {
@@ -52,53 +55,62 @@
 </head>
 <body>
     @*<div class="container">
-        <h4>Category > SubCategory</h4>
-        @using (Html.BeginForm())
-        {
-            <select class="categoryDropdown" id="catSelect" for="@Model.SearchView.Categories">
-                @foreach (var v in Model.SearchView.Categories)
-                {
-                    <option value="@v.Category_ID">@v.Category_Name</option>
-                }
-            </select>
+            <h4>Category > SubCategory</h4>
+            @using (Html.BeginForm())
+            {
+                <select class="categoryDropdown" id="catSelect" for="@Model.SearchView.Categories">
+                    @foreach (var v in Model.SearchView.Categories)
+                    {
+                        <option value="@v.Category_ID">@v.Category_Name</option>
+                    }
+                </select>
 
-            Html.RenderPartial("ProductSearchBar");
+                Html.RenderPartial("ProductSearchBar");
 
-            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
-        }
-    </div>*@
+                <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+            }
+        </div>*@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <span>
-                            Search:
-                        </span>
-                        <button>
-                            Save
-                        </button>
-                        <button>
-                            Clear
-                        </button>
+                        <div class="row">
+                            <span class="col-sm-4">
+                                <b>Search:</b>
+                            </span>
+                            <button class="col-sm-3 btn btn-primary">
+                                Save
+                            </button>
+                            <button class="col-sm-3 btn btn-primary clearButton">
+                                Clear
+                            </button>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <button>
-                            Product
-                        </button>
-                        <button>
-                            Project
-                        </button>
+                        <div class="row">
+                            <button class="col-sm-6">
+                                Product
+                            </button>
+                            <button class="col-sm-6">
+                                Project
+                            </button>
+                        </div>
                     </li>
                     <li class="list-group-item">
                         <span>
-                            Product Type
+                            <b>Product Type</b>
                         </span>
                     <li class="list-group-item">
-                        <b>Model Year:</b> <input class="modelInput" id="minModelInput" /> - <input class="modelInput" id="maxModelInput" />
+                        <div class="row">                            
+                            <div class="col-sm-3"><b>Model Year:</b></div>
+                            <input class="modelInput col-sm-3" id="minModelInput" />
+                            <div class="col-sm-1">-</div>
+                            <input class="modelInput col-sm-3" id="maxModelInput" />
+                        </div>
                         @foreach (KeyValuePair<string, List<string>> prop in Model.TypeFilters)
                         {
-                            <div>
+                            <div class="row">
                                 <label>@prop.Key</label>
                                 <select class="typePropertySelect">
                                     <option value=""></option>
@@ -118,42 +130,47 @@
                     <li class="list-group-item">
                         @foreach (tblSpecFilter prop in Model.TechSpecFilters)
                         {
-                            <label>@prop.tblProperty.Property_Name</label>
-                            <input type="number" id="minInput@(prop.Property_ID)" />
-                            <div id="slider@(prop.Property_ID)"></div>
-                            <input type="number" id="maxInput@(prop.Property_ID)" />
-                            <script type="text/javascript">
+                            <div class="row"><label>@prop.tblProperty.Property_Name</label></div>
+                            <div class="row">
+                                <input class="col-sm-3"type="number" id="minInput@(prop.Property_ID)" />
+                                <div class="col-5 techSpecSlider" id="slider@(prop.Property_ID)"></div>
+                                <input class="col-sm-3" type="number" id="maxInput@(prop.Property_ID)" />
+                                <script type="text/javascript">
                                 createSlider(@prop.Property_ID, "@prop.Min_value", "@prop.Max_value")
-                            </script>
+                                </script>
+                            </div>
                         }
                     </li>
                 </ul>
             </div>
             <div class="col-sm-8">
-                @foreach (ProductViewModel product in Model.Products)
-                {
-                    <div class="card productCard" id="card@(product.Product.Product_ID)">
-                        <img class="card-img-top" src="#" alt="Product Image" />
-                        <div class="card-body">
+                <div class="row">Category > Subcategory</div>
+                <div class="row">
+                    @foreach (ProductViewModel product in Model.Products)
+                    {
+                        <div class="card productCard" id="card@(product.Product.Product_ID)">
+                            <img class="card-img-top" src="~/Images/@(product.Product.Product_Image)" alt="Product Image" />
+                            <div class="card-body">
 
-                            <h5><a href="ProductDetails_placeholder?productId=@product.Product.Product_ID">@product.Product.Product_Name</a></h5>
-                            <h5>@product.Product.Series Series</h5>
-                            <h5>@product.Product.Model</h5>
-                            @foreach (string typePropName in Model.TypeFilters.Keys)
-                            {
-                                <div>@typePropName: @product.TypeProps[typePropName]</div>
-                            }
-                            @foreach (tblSpecFilter prop in Model.TechSpecFilters)
-                            {
-                                <div>@prop.tblProperty.Property_Name : <span class="techSpecProperty" propId="@prop.tblProperty.Property_ID">@product.TechSpecsProps[@prop.tblProperty.Property_Name]</span></div>
-                            }
-                            <input type="checkbox" value="@product.Product.Product_ID" /><label>Compare</label>
-                            <button class="btn btn-primary">Add to</button>
+                                <h5><a href="ProductDetails_placeholder?productId=@product.Product.Product_ID">@product.Product.Product_Name</a></h5>
+                                <h5>@product.Product.Series Series</h5>
+                                <h5>@product.Product.Model</h5>
+                                @foreach (string typePropName in Model.TypeFilters.Keys)
+                                {
+                                    <div>@typePropName: @product.TypeProps[typePropName]</div>
+                                }
+                                @foreach (tblSpecFilter prop in Model.TechSpecFilters)
+                                {
+                                    <div>@prop.tblProperty.Property_Name : <span class="techSpecProperty" propId="@prop.tblProperty.Property_ID">@product.TechSpecsProps[@prop.tblProperty.Property_Name]</span></div>
+                                }
+                                <input type="checkbox" value="@product.Product.Product_ID" /><label>Compare</label>
+                                <button class="btn btn-primary">Add to</button>
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
+                    @Html.ActionLink("Compare Products", "ProductCompare_placeholder")
+                </div>
             </div>
-            @Html.ActionLink("Compare Products", "ProductCompare_placeholder")
         </div>
     </div>
     <script>

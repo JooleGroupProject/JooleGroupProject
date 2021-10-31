@@ -38,5 +38,9 @@ namespace JooleGroupProject.Service
             return this.productRepository.GetProductDetails(id);
         }
         
+        public tblProduct GetProductByName(string productName)
+        {
+            return this.productRepository.GetProductByName(productName);
+        }
     }
 }

@@ -144,15 +144,19 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Product\ProductDetail.css" />
+    <Content Include="Images\industrialCeilingFan.jpg" />
     <Content Include="Images\JooleLogo.png" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Product\ProductSummary.css" />
     <Content Include="Content\UserLogin\Login.css" />
-    <Content Include="Content\Product\ProductDetail.css" />
+    <Content Include="Content\Product\ProductDetails.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\lurayEcoSeries.jpg" />
+    <Content Include="Images\minkaCeilingFan.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -164,7 +168,6 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Views\UserLogin\LoginPage.cshtml" />
-    <Content Include="Views\Product\ProductDetails_placeholder.cshtml" />
     <Content Include="Views\Product\ProductCompare_placeholder.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
@@ -184,16 +187,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\ProductSummary.cshtml" />
     <Content Include="Views\Product\ProductDetails_placeholder.cshtml" />
-    <Content Include="Views\Product\ProductCompare_placeholder.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Shared\CategoryDropdown.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\ProductSearchBar.cshtml" />
-    <Content Include="Views\ProductSearchBar.cshtml" />
-    <Content Include="Views\Index.cshtml" />
-    <Content Include="Views\CategoryDropdown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

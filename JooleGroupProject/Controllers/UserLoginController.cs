@@ -48,7 +48,7 @@ namespace JooleGroupProject.Controllers
                     var userName = Session["User_Name"];
                     var userEmail = Session["User_Email"];
                     //return to searching page
-                    return RedirectToAction("ProductSummary", "Product");
+                    return RedirectToAction("Index", "Search");
                 }
             }
 

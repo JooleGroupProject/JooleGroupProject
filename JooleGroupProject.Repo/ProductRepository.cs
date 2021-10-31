@@ -29,5 +29,10 @@ namespace JooleGroupProject.Repo
                    select product;
         }
 
+        public tblProduct GetProductByName(string productName)
+        {
+            System.Diagnostics.Debug.Write(productName);
+            return this.entities.First(p => p.Product_Name == productName);
+        }
     }
 }
