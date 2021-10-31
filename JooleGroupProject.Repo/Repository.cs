@@ -30,5 +30,16 @@ namespace JooleGroupProject.Repo
             return this.entities;
         }
 
+        public void Insert(T entity)
+        {
+            this.entities.Add(entity);
+            this.context.SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            this.context.SaveChanges();
+        }
+
     }
 }
