@@ -1,0 +1,278 @@
+﻿@model IEnumerable<tblProduct>
+@using JooleGroupProject.Data
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Summary</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @*
+    <script>
+        $(document).ready(function () {
+            $("#Product_Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Search/GetProdName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, catID: $("#catSelect").val() },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Product_Name, value: item.Product_Name };
+                            }));
+                        }
+                    });
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+    *@
+</head>
+
+<body>
+
+
+
+
+    @{
+        IEnumerable<tblProduct> product = ViewData["tblProducts"] as IEnumerable<tblProduct>;
+        IEnumerable<tblPropertyValue> UseType = ViewData["UseType"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Application = ViewData["Application"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Accessories = ViewData["Accessories"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Airflow = ViewData["Airflow"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> Power = ViewData["Power"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> OperatingVoltage = ViewData["OperatingVoltage"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> FanSpeed = ViewData["FanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> NumFanSpeed = ViewData["NumFanSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblPropertyValue> SoundAtMaxSpeed = ViewData["SoundAtMaxSpeed"] as IEnumerable<tblPropertyValue>;
+        IEnumerable<tblCategory> Dropdown = ViewData["Dropdown"] as IEnumerable<tblCategory>;
+        IEnumerable<tblCategory> SearchBar = ViewData["SearchBar"] as IEnumerable<tblCategory>;
+    }
+
+    @*
+
+        <img src="@Url.Content("~/Images/JooleLogo.png")" />
+
+        @using (Html.BeginForm())
+        {
+            <select class="categoryDropdown">
+
+                @foreach (tblCategory tblcategory in Dropdown)
+                {
+                    <option value="@tblcategory.Category_Name">@tblcategory.Category_Name</option>
+
+                }
+
+            </select>
+            <input class="editorSearchBar" type="text" for="@SearchBar" id="Product_Name" />
+            <button type="submit" class="btn" style="background-color: #4682B4; color: white;"><i class="glyphicon glyphicon-search"></i></button>
+        }
+
+    *@
+
+    <div id="MenuContainer">
+        <div id="Menu">
+            <a>@Html.ActionLink("Product Summary", "ProductSummary")</a>
+            <a>@Html.ActionLink("Product Detail", "ProductDetail")</a>
+            <a>Product Decumentation</a>
+            <a>Contact</a>
+        </div>
+    </div>
+
+
+
+    <h2 id="TitleColor">Product Summary</h2>
+
+    <p id="TableLine"></p>
+
+
+
+
+
+
+
+
+
+    <div id="DescriptionDIV">
+        <h5>DESCRIPTION</h5>
+        <table id="DescriptionTable">
+            <tr>
+                <th id="TableHeader">Manufacture</th>
+
+                @foreach (tblProduct tblproduct in product)
+                {
+                    <td id="Tabletd">@tblproduct.tblManufacturer.Manufacturer_Name</td>
+                }
+
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Series</th>
+
+                @foreach (tblProduct tblproduct in product)
+                {
+                    <td id="Tabletd">@tblproduct.Series</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Model</th>
+
+                @foreach (tblProduct tblproduct in product)
+                {
+                    <td id="Tabletd">@tblproduct.Model</td>
+                }
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+    <div id="TypeDIV">
+
+        <p id="TableLine"></p>
+        <h5>TYPE</h5>
+        <table id="TypeTable">
+            <tr>
+                <th id="TableHeader">Use Type</th>
+                @foreach (tblPropertyValue pVal in UseType)
+                {
+                    <td id="Tabletd">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Application</th>
+                @foreach (tblPropertyValue pVal in Application)
+                {
+                    <td id="Tabletd">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Mounting Location</th>
+                <td id="Tabletd"></td>
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Accessories</th>
+                @foreach (tblPropertyValue pVal in Accessories)
+                {
+                    <td id="Tabletd">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Model Year</th>
+                @foreach (tblProduct tblproduct in product)
+                {
+                    <td id="Tabletd">@tblproduct.Model_Year</td>
+                }
+            </tr>
+
+        </table>
+    </div>
+
+
+    <div id="TechDIV">
+
+        <p id="TableLine"></p>
+
+        <h5>TECHNICAL SPECIFICATIONS</h5>
+        <table>
+            <tr id="TechTabletr">
+                <th id="TableHeader">Air Flow (CFM)</th>
+                @foreach (tblPropertyValue pVal in Airflow)
+                {
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Power (W)</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
+                @foreach (tblPropertyValue pVal in Power)
+                {
+                    <td id="Techtd">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Operating Voltage (VAC)</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
+                @foreach (tblPropertyValue pVal in OperatingVoltage)
+                {
+                    <td id="Techtd">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Fan Speed (RPM)</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
+                @foreach (tblPropertyValue pVal in FanSpeed)
+                {
+                    <td id="Techtd">@pVal.Value</td>
+                }
+
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Number of fan speeds</th>
+                @foreach (tblPropertyValue pVal in NumFanSpeed)
+                {
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TechTableHeader">Sound at max speed(dBA)</th>
+                @foreach (tblPropertyValue pVal in SoundAtMaxSpeed)
+                {
+                    <td id="Techtd" colspan="4">@pVal.Value</td>
+                }
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Fan sweep diameter (in)</th>
+                <td id="Techtd" colspan="4"></td>
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Height (in)</th>
+                <th id="MinMaxHeader">Min</th>
+                <td id="Techtd"></td>
+                <th id="MinMaxHeader">Max</th>
+                <td id="Techtd"></td>
+
+            </tr>
+
+            <tr>
+                <th id="TableHeader">Weight (lbs)</th>
+                <td id="Techtd" colspan="4"> </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

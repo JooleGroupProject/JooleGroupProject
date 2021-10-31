@@ -19,6 +19,5 @@ namespace JooleGroupProject.Models
             TechSpecsProps = new Dictionary<string, string>();
             TypeProps = new Dictionary<string, string>();
         }
-
     }
 }
