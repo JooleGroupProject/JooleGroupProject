@@ -144,7 +144,6 @@
                 </ul>
             </div>
             <div class="col-sm-8">
-                <div class="row">Category > Subcategory</div>
                 @Html.BeginForm("SubmitCompare", "Product"){
                 <div class="row">
                     @for (int i = 0; i < Model.Products.Count; i++)
@@ -170,9 +169,8 @@
                             </div>
                         </div>
                     }
-                    <input type="submit" value="Compare" />
-                    @Html.ActionLink("Compare Products", "ProductCompare_placeholder")
                 </div>
+                <input type="submit" value="Compare" />
             </div>
             }
         </div>

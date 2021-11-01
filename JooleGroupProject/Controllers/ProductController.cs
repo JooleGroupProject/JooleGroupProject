@@ -66,7 +66,6 @@ namespace JooleGroupProject.Controllers
                 viewModel.Products.Add(productViewModel);
             }
             viewModel.TypeFilters = this.filterService.getTypeFiltersBySubCatId(subCatId);
-            //viewModel.TechSpecFilters = this.filterService.GetTechSpecFiltersBySubCatId(subCatId);
             viewModel.TechSpecFilters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId).ToList();
 
             IEnumerable<tblSpecFilter> filters = this.filterService.GetTechSpecFiltersBySubCat2(subCatId);
@@ -93,14 +92,8 @@ namespace JooleGroupProject.Controllers
                 if (p.IsChecked)
                 {
                     viewModels.Add(GenerateProductViewModel(p.Product.Product_ID));
-                    System.Diagnostics.Debug.WriteLine(p.Product.Product_ID);
                 }
             }
-            /*
-            viewModels.Add(GenerateProductViewModel(1));
-            viewModels.Add(GenerateProductViewModel(2));
-            viewModels.Add(GenerateProductViewModel(3));
-            */
             return View("ProductCompare_placeholder", viewModels);
         }
 

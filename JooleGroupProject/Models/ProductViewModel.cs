@@ -12,8 +12,6 @@ namespace JooleGroupProject.Models
         public Dictionary<string, string> TechSpecsProps { get; set; }
         public Dictionary<string, string> TypeProps { get; set; }
         public bool IsChecked { get; set; }
-        public string category;
-        public string subCategory;
 
         public ProductViewModel()
         {
