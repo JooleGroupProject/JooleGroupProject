@@ -146,6 +146,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Product\ProductDetail.css" />
     <Content Include="Images\industrialCeilingFan.jpg" />
+    <Content Include="Content\UserLogin\SignUpNew.js" />
     <Content Include="Images\JooleLogo.png" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Product\ProductSummary.css" />
