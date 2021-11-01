@@ -102,7 +102,7 @@
                             <b>Product Type</b>
                         </span>
                     <li class="list-group-item">
-                        <div class="row">                            
+                        <div class="row">
                             <div class="col-sm-3"><b>Model Year:</b></div>
                             <input class="modelInput col-sm-3" id="minModelInput" />
                             <div class="col-sm-1">-</div>
@@ -132,7 +132,7 @@
                         {
                             <div class="row"><label>@prop.tblProperty.Property_Name</label></div>
                             <div class="row">
-                                <input class="col-sm-3"type="number" id="minInput@(prop.Property_ID)" />
+                                <input class="col-sm-3" type="number" id="minInput@(prop.Property_ID)" />
                                 <div class="col-5 techSpecSlider" id="slider@(prop.Property_ID)"></div>
                                 <input class="col-sm-3" type="number" id="maxInput@(prop.Property_ID)" />
                                 <script type="text/javascript">
@@ -145,32 +145,36 @@
             </div>
             <div class="col-sm-8">
                 <div class="row">Category > Subcategory</div>
+                @Html.BeginForm("SubmitCompare", "Product"){
                 <div class="row">
-                    @foreach (ProductViewModel product in Model.Products)
+                    @for (int i = 0; i < Model.Products.Count; i++)
                     {
-                        <div class="card productCard" id="card@(product.Product.Product_ID)">
-                            <img class="card-img-top" src="~/Images/@(product.Product.Product_Image)" alt="Product Image" />
+                        <div class="card productCard" id="card@(Model.Products[i].Product.Product_ID)">
+                            <img class="card-img-top" src="~/Images/@(Model.Products[i].Product.Product_Image)" alt="Product Image" />
                             <div class="card-body">
 
-                                <h5><a href="ProductDetails_placeholder?productId=@product.Product.Product_ID">@product.Product.Product_Name</a></h5>
-                                <h5>@product.Product.Series Series</h5>
-                                <h5>@product.Product.Model</h5>
+                                <h5><a href="ProductDetails_placeholder?productId=@Model.Products[i].Product.Product_ID">@Model.Products[i].Product.Product_Name</a></h5>
+                                <h5>@Model.Products[i].Product.Series Series</h5>
+                                <h5>@Model.Products[i].Product.Model</h5>
                                 @foreach (string typePropName in Model.TypeFilters.Keys)
                                 {
-                                    <div>@typePropName: @product.TypeProps[typePropName]</div>
+                                    <div>@typePropName: @Model.Products[i].TypeProps[typePropName]</div>
                                 }
                                 @foreach (tblSpecFilter prop in Model.TechSpecFilters)
                                 {
-                                    <div>@prop.tblProperty.Property_Name : <span class="techSpecProperty" propId="@prop.tblProperty.Property_ID">@product.TechSpecsProps[@prop.tblProperty.Property_Name]</span></div>
+                                    <div>@prop.tblProperty.Property_Name : <span class="techSpecProperty" propId="@prop.tblProperty.Property_ID">@Model.Products[i].TechSpecsProps[@prop.tblProperty.Property_Name]</span></div>
                                 }
-                                <input type="checkbox" value="@product.Product.Product_ID" /><label>Compare</label>
+                                @Html.CheckBoxFor(m => Model.Products[i].IsChecked)
+                                @Html.HiddenFor(m => Model.Products[i].Product.Product_ID)<label>Compare</label>
                                 <button class="btn btn-primary">Add to</button>
                             </div>
                         </div>
                     }
+                    <input type="submit" value="Compare" />
                     @Html.ActionLink("Compare Products", "ProductCompare_placeholder")
                 </div>
             </div>
+            }
         </div>
     </div>
     <script>

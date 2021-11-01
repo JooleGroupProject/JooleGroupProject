@@ -144,7 +144,10 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Product\ProductCompare.css" />
     <Content Include="Content\Product\ProductDetail.css" />
+    <Content Include="Images\coffeeTable.jpg" />
+    <Content Include="Images\graftonLight.jpg" />
     <Content Include="Images\industrialCeilingFan.jpg" />
     <Content Include="Content\UserLogin\SignUpNew.js" />
     <Content Include="Images\JooleLogo.png" />
@@ -158,6 +161,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\lurayEcoSeries.jpg" />
     <Content Include="Images\minkaCeilingFan.jpg" />
+    <Content Include="Images\rusticLight.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

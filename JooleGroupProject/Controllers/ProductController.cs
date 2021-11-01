@@ -85,12 +85,22 @@ namespace JooleGroupProject.Controllers
             return View(viewModel);
         }
 
-        public ActionResult SubmitCompare()
+        public ActionResult SubmitCompare(ProductSummaryViewModel obj)
         {
             List<ProductViewModel> viewModels = new List<ProductViewModel>();
+            foreach (ProductViewModel p in obj.Products)
+            {
+                if (p.IsChecked)
+                {
+                    viewModels.Add(GenerateProductViewModel(p.Product.Product_ID));
+                    System.Diagnostics.Debug.WriteLine(p.Product.Product_ID);
+                }
+            }
+            /*
             viewModels.Add(GenerateProductViewModel(1));
             viewModels.Add(GenerateProductViewModel(2));
             viewModels.Add(GenerateProductViewModel(3));
+            */
             return View("ProductCompare_placeholder", viewModels);
         }
 

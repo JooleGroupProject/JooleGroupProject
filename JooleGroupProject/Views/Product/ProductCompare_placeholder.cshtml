@@ -12,60 +12,92 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>View</title>
+    @Styles.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/Product/ProductCompare.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
-    <table class="table">
-        <tr>
-            <td>DESCRIPTION</td>
-        </tr>
-        <tr>
-            <td>Manufacturer</td>
-            @foreach (ProductViewModel product in Model)
-            {
-                <td>@product.Product.Manufacturer_ID</td>
-            }
-        </tr>
-        <tr>
-            <td>Series</td>
-            @foreach (ProductViewModel product in Model)
-            {
-                <td>@product.Product.Series</td>
-            }
-        </tr>
-        <tr>
-            <td>Model</td>
-            @foreach (ProductViewModel product in Model)
-            {
-                <td>@product.Product.Model</td>
+    <div class="container">
+        <div class="row" id="MenuContainer">
+            <div id="Menu">
+                <a>@Html.ActionLink("Product Summary", "ProductSummary")</a>
+                <a>@Html.ActionLink("Product Detail", "ProductDetail")</a>
+                <a>Product Decumentation</a>
+                <a>Contact</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10">
+                <table class="table">
+                    <tr>
+                        <td></td>
+                        @foreach (ProductViewModel product in Model)
+                        {
+                            <td>
+                                <img class="card-img-top" src="~/Images/@(product.Product.Product_Image)" alt="Product Image" />
+                            </td>
 
-            }
-        </tr>
-        <tr>
-            <td>TYPE</td>
-        </tr>
-        @foreach (string propName in @Model[0].TypeProps.Keys)
-        {
-            <tr>
-                <td>@propName</td>
-                @foreach (ProductViewModel product in Model)
-                {
-                    <td>@product.TypeProps[@propName]</td>
-                }
-            </tr>
-        }
-        <tr>
-            <td>TECHNICAL SPECIFIC</td>
-        </tr>
-        @foreach (string propName in @Model[0].TechSpecsProps.Keys)
-        {
-            <tr>
-                <td>@propName</td>
-                @foreach (ProductViewModel product in Model)
-                {
-                    <td>@product.TechSpecsProps[@propName]</td>
-                }
-            </tr>
-        }
-    </table>
+                        }
+                    </tr>
+                    <tr>
+                        <td>DESCRIPTION</td>
+                    </tr>
+                    <tr>
+                        <td class="TableHeader">Manufacturer</td>
+                        @foreach (ProductViewModel product in Model)
+                        {
+                            <td>@product.Product.Manufacturer_ID</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="TableHeader">Series</td>
+                        @foreach (ProductViewModel product in Model)
+                        {
+                            <td>@product.Product.Series</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td class="TableHeader">Model</td>
+                        @foreach (ProductViewModel product in Model)
+                        {
+                            <td>@product.Product.Model</td>
+
+                        }
+                    </tr>
+                    <tr>
+                        <td>TYPE</td>
+                    </tr>
+                    @foreach (string propName in @Model[0].TypeProps.Keys)
+                    {
+                        <tr>
+                            <td class="TableHeader">@propName</td>
+                            @foreach (ProductViewModel product in Model)
+                            {
+                                <td>@product.TypeProps[@propName]</td>
+                            }
+                        </tr>
+                    }
+                    <tr>
+                        <td>TECHNICAL SPECIFIC</td>
+                    </tr>
+                    @foreach (string propName in @Model[0].TechSpecsProps.Keys)
+                    {
+                        <tr>
+                            <td class="TableHeader">@propName</td>
+                            @foreach (ProductViewModel product in Model)
+                            {
+                                <td>@product.TechSpecsProps[@propName]</td>
+                            }
+                        </tr>
+                    }
+                </table>
+                <div class="col-xs-1">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
