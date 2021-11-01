@@ -1,12 +1,41 @@
-﻿#MenuContainer {
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border-radius: var(--border-redius);
+}
+.detailTopColor {
+    background: #4682B4;
+    background: linear-gradient(to bottom, #4682B4, #ADD8E6, #FFFFFF 10%);
+}
+/*#MenuContainer {
     background-color: #e8e8e8;
+}*/
+.imagePlace {
+    position: relative;
+    left: -22%;
+    top: 25px;
 }
 
 #Menu {
+    position:relative;
     display: inline-flex;
     justify-content: space-between;
     column-gap: 20px;
     padding: 20px 0;
+    left:-20%;
+
 }
 
 #Title {
@@ -26,4 +55,8 @@
 
 .propertyName {
     background-color: #DCDCDC;
+}
+
+a{
+    font-size:15px;
 }

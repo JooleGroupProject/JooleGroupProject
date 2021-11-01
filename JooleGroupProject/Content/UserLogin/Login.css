@@ -15,6 +15,7 @@ body {
     border-radius: var(--border-redius);
     
 }
+
 #login-div {
     position: absolute;
     width: 600px;
@@ -66,6 +67,7 @@ body {
     background: #4682B4;
     background: linear-gradient(to bottom, #4682B4, #ADD8E6, #FFFFFF);
 }
+
 .editorBar {
     border-radius: 5px;
     border:0;
