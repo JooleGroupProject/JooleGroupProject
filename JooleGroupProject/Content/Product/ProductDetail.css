@@ -42,7 +42,11 @@ body {
     color: #3333ff;
 }
 
-.tableRow {
+
+
+#tableRow {
+    width: 390px;
+    height: 30px;
     border-style: solid;
     border-width: thin;
     border-color: #e0e0eb;
@@ -59,4 +63,55 @@ body {
 
 a{
     font-size:15px;
+}
+
+#DescriptionDIV {
+    width: 50%;
+    float: left;
+}
+
+#TypeDIV {
+    display: inline-block;
+    margin-left: 1px;
+    margin-top: 30px;
+    width: 50%;
+    height: 300px;
+}
+
+#TechDIV {
+    width: 50%;
+    float: right;
+    margin-top: -456px;
+}
+
+
+#TechTabletr {
+    height: 33px;
+}
+
+#TableHeader {
+    background-color: #DCDCDC;
+    width: 30%;
+}
+
+#TechTableHeader {
+    background-color: #DCDCDC;
+    width: 35%;
+}
+
+#MinMaxHeader {
+    background-color: #DCDCDC;
+    width: 15%;
+}
+
+#MinVal {
+    width: 15%;
+}
+
+#TableLine {
+    position: absolute;
+    width: 550px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #e0e0eb;
 }

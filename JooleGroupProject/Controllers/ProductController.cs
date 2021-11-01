@@ -38,6 +38,7 @@ namespace JooleGroupProject.Controllers
             this.filterService = new FilterService();
             this.catService = new CategoryService();
             this.propertyValueService = new PropertyValueService();
+            this.catService = new CategoryService();
             this.viewModel = new SearchModel();
             this.mai = new JooleModel();
         }
@@ -116,10 +117,8 @@ namespace JooleGroupProject.Controllers
             ViewData["NumFanSpeed"] = propertyValueService.GetNumFanSpeedByProductId(id);
             ViewData["SoundAtMaxSpeed"] = propertyValueService.GetSoundAtMaxSpeedByProductId(id);
 
-            //viewModel.Categories = this.catService.getCategory().ToList();
-            //ViewData["Dropdown"] = viewModel.Categories;
-            //ViewData["SearchBar"] = viewModel.autoComp;
             return View();
+
 
         }
         public ActionResult ProductSearchBar()

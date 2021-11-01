@@ -27,60 +27,81 @@
                 <a href="#">Contact</a>
             </div>
         </div>
-        <div class="row" style="position: relative; left: -20%;">
-            <div id="Title">
-                <h2>Product Summary</h2>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <table>
-                        <tr>
-                            Description
-                        </tr>
-                        <tr>
-                            <td class="propertyName">Manufacture Id</td>
-                            <td class="tableRow">@Model.Product.Manufacturer_ID</td>
-                        </tr>
-                        <tr>
-                            <td class="propertyName">Series</td>
-                            <td class="tableRow">@Model.Product.Series_Info</td>
-                        </tr>
-                        <tr>
-                            <td class="propertyName">Model</td>
-                            <td class="tableRow">@Model.Product.Model</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>
-                                Type
-                            </th>
-                        </tr>
-                        @foreach (KeyValuePair<string, string> prop in Model.TypeProps)
-                        {
+
+        <div >
+            
+                <h2 id="Title">Product Summary</h2>
+                <p id="TableLine"></p>
+            <br />
+
+            
+
+            <div>
+                <div>
+                    <div id="DescriptionDIV">
+                        <h5>Description</h5>
+                        <table>
                             <tr>
-                                <td class="propertyName">@prop.Key</td>
-                                <td class="tableRow">@prop.Value</td>
+                                <th id="TableHeader">Manufacture Id</th>
+                                <td id="tableRow">@Model.Product.Manufacturer_ID</td>
+
                             </tr>
-                        }
-                    </table>
+
+                            <tr>
+                                <th id="TableHeader">Series</th>
+                                <td id="tableRow">@Model.Product.Series_Info</td>
+                            </tr>
+                            <tr>
+                                <th id="TableHeader">Model</th>
+                                <td id="tableRow">@Model.Product.Model</td>
+                            </tr>
+
+
+                        </table>
+
+
+
+                    </div>
+                    
+                    <div id="TypeDIV">
+                        <p id="TableLine"></p>
+                        <br />
+                        <h5>TYPE</h5>
+                        <table>
+                            @foreach (KeyValuePair<string, string> prop in Model.TypeProps)
+                            {
+                                <tr>
+                                    <th id="TableHeader">@prop.Key</th>
+                                    <td id="tableRow">@prop.Value</td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+
+                    
+
                 </div>
-                <div class="col-sm-6">
+
+
+                <div id="TechDIV">
+                    <p id="TableLine"></p>
+                    <br />
+                    <h5>TECHNICAL SPECIFICATIONS</h5>
                     <table>
-                        <tr>
-                            <th>
-                                Tech Specs
-                            </th>
-                        </tr>
                         @foreach (KeyValuePair<string, string> prop in Model.TechSpecsProps)
                         {
-                            <tr class="tableRow">
-                                <td class="propertyName">@prop.Key</td>
-                                <td>@prop.Value</td>
+                            <tr>
+                                <th id="TechTableHeader">@prop.Key</th>
+                                <td id="tableRow">@prop.Value</td>
                             </tr>
                         }
                     </table>
                 </div>
+
+
+                
             </div>
         </div>
     </div>
