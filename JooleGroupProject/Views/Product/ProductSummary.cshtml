@@ -53,7 +53,7 @@
             });
         </script>*@
 </head>
-<body>
+<body class="searchTopColor">
     @*<div class="container">
             <h4>Category > SubCategory</h4>
             @using (Html.BeginForm())
@@ -71,6 +71,7 @@
             }
         </div>*@
     <div class="container">
+        <div class="imagePlace"><img src="~/Images/JooleLogo.png" width="120" height="60" /> </div>
         <div class="row">
             <div class="col-sm-4">
                 <ul class="list-group">
@@ -79,10 +80,10 @@
                             <span class="col-sm-4">
                                 <b>Search:</b>
                             </span>
-                            <button class="col-sm-3 btn btn-primary">
+                            <button class="col-sm-3 btn btn-primary" id="btnsavec">
                                 Save
                             </button>
-                            <button class="col-sm-3 btn btn-primary clearButton">
+                            <button class="col-sm-3 btn btn-primary clearButton" id="btnsavec">
                                 Clear
                             </button>
                         </div>

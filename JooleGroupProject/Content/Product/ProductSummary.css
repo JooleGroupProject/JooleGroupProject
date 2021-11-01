@@ -1,17 +1,82 @@
-﻿.productCard {
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border-radius: var(--border-redius);
+}
+
+.productCard {
     display: inline;
     max-width: 200px;
 }
 
-.techSpecSlider{
+.techSpecSlider {
     margin-left: 10px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
-.clearButton{
-    margin-left:10px;
+.clearButton {
+    margin-left: 10px;
 }
 
-img{
+img {
     max-height: 100px;
+}
+
+.searchTopColor {
+    background: #4682B4;
+    background: linear-gradient(to bottom, #4682B4, #ADD8E6, #FFFFFF 10%);
+}
+
+.imagePlace {
+    position: relative;
+    left: -22%;
+    top: -25px;
+}
+
+.rowPosition {
+    position: relative;
+    left: -24%;
+}
+
+#btnsavec {
+    position: relative;
+    border: 0;
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    background-color: #00BFFF;
+}
+
+#probtn {
+    height: 30px;
+    width: 190px;
+    font-size: 15px;
+}
+
+b {
+    font-size: 15px;
+}
+
+#minModelInput {
+    position: absolute;
+    left: 30%;
+    width: 50px;
+}
+
+#maxModelInput {
+    position: absolute;
+    left: 60%;
+    width: 50px;
 }

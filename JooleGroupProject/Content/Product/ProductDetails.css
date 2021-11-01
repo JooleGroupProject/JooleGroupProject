@@ -1,5 +1,34 @@
-﻿body {
+﻿html {
+    height: 100%;
 }
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border-radius: var(--border-redius);
+}
+
+.detailTopColor {
+    background: #4682B4;
+    background: linear-gradient(to bottom, #4682B4, #ADD8E6, #FFFFFF 10%);
+}
+/*#MenuContainer {
+    background-color: #e8e8e8;
+}*/
+.imagePlace {
+    position: relative;
+    left: -22%;
+    top: 25px;
+}
+
 
 #MenuContainer {
     background-color:#e8e8e8;
