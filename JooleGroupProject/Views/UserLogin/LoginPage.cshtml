@@ -17,11 +17,12 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/UserLogin/SignUpNew.js"></script>
 </head>
 <body class="backColor">
     <div class="signUp-div">
-        <a class="signUp" data-toggle="modal" data-target=".bootstrapmodal">Sign Up</a>
-        <!--@Html.ActionLink("Sign Up", "SignUpPage", "UserLogin", new { @class = "signUp" })-->
+        <a class="signUp" data-toggle="modal" data-target=".SignUpPageM">Sign Up</a>
+        <!--Html.ActionLink("Sign Up", "SignUpPage", "UserLogin", new { class = "signUp" })-->
     </div>
 
     <div id="login-div">
@@ -72,7 +73,8 @@
                     <td align="center">@Html.ValidationMessageFor(validInfo => validInfo.User_Password)</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td></td>
+                    <td align="center">
                         <label class="field-validation-error" align="center">@Html.DisplayFor(errInfo => errInfo.LoginErrorMessage)</label>
                     </td>
                 </tr>
@@ -95,116 +97,127 @@
     </div>
 
     <!--SignUp-->
-    <script>
-        var previewimg = function (event) {
-            var result = document.getElementById("imgpreview");
-            result.src = URL.createObjectURL(event.target.files[0]);
-        };
-    </script>
-    <div class="modal fade bootstrapmodal">
+    
+    <div class="modal fade SignUpPageM">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button data-dismiss="modal" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="modal-title" style="font-weight: bold;">Register as User</div>
                 </div>
-                <div class="modal-body">
-                    <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td></td>
-                            <td style="font-weight: bold;">Image Preview</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><br /></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><img class="imgView" id="imgpreview"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><br /></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="file" name="imgfile" onchange="previewimg(event)" /></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><br /></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: bold;">UserName:</td>
-                            <td>
+                @using (Html.BeginForm("SignUp", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body">
+                        <table class="signUpTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td></td>
+                                <td style="font-weight: bold;">Image Preview</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><img class="imgView" id="imgpreview"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="font-weight: bold; font-size: 15px;">Your Profile Pic</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="file" name="Imgfile" onchange="previewimg(event)" /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br /></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">UserName:</td>
+                                <td>
 
-                                @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { placeholder = "User Name", required = "required" } })
-                                <br>@Html.ValidationMessageFor(userName => userName.User_Name)
-                            </td>
-                            <td></td>
-                        </tr>
+                                    @Html.EditorFor(userName => userName.User_Name, new { htmlAttributes = new { placeholder = "User Name", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userName => userName.User_Name)
+                                    @if (ViewBag.DuplicateMessage != null)
+                                    {
+                                        <script type="text/javascript">
+                                                window.onload = function () {
+                                                    alert("@ViewBag.DuplicateMessage");
+                                                };
+                                        </script>
 
-                        <tr>
-                            <td style="font-weight: bold;">Email Address:</td>
-                            <td>
-                                @Html.EditorFor(userEmail => userEmail.User_Email, new { htmlAttributes = new { placeholder = "Email Id", required = "required" } })
-                                <br>@Html.ValidationMessageFor(userEmail => userEmail.User_Email)
-                            </td>
+                                    }
+                                    else if (ViewBag.SuccessMessage != null)
+                                    {
+                                        <script type="text/javascript">
+                                                window.onload = function () {
+                                                    alert("@ViewBag.SuccessMessage");
+                                                };
+                                        </script>
 
-                            <td></td>
-                        </tr>
+                                    }
+                                </td>
+                                <td></td>
+                            </tr>
 
-                        <tr>
-                            <td style="font-weight: bold;">Password:</td>
-                            <td>
-                                @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
-                                <br>@Html.ValidationMessageFor(userPassword => userPassword.User_Password)
-                            </td>
-                            <td></td>
-                        </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Email Address:</td>
+                                <td>
+                                    @Html.EditorFor(userEmail => userEmail.User_Email, new { htmlAttributes = new { placeholder = "Email Id", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userEmail => userEmail.User_Email)
+                                    @if (ViewBag.DuplicateEmail != null)
+                                    {
+                                        <script type="text/javascript">
+                                                window.onload = function () {
+                                                    alert("@ViewBag.DuplicateEmail");
+                                                };
+                                        </script>
 
-                        <tr>
-                            <td style="font-weight: bold;">Confirm Password:</td>
-                            <td>
-                                @Html.EditorFor(userPassword => userPassword.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
-                                <br>@Html.ValidationMessageFor(validInfo => validInfo.ConfirmPassword)
-                            </td>
-                            <td></td>
-                        </tr>
+                                    }
+                                </td>
 
-                        <tr>
-                            <td></td>
-                            <td style="color:red;font-size:20px;">
-                                @ViewBag.SuccessMessage
-                            </td>
-                            <td></td>
-                        </tr>
+                                <td></td>
+                            </tr>
 
-                        <tr>
-                            <td></td>
-                            <td style="color:red;font-size:20px;">
-                                @ViewBag.DuplicateMessage
-                            </td>
-                            <td></td>
-                        </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Password:</td>
+                                <td>
+                                    @Html.EditorFor(userPassword => userPassword.User_Password, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(userPassword => userPassword.User_Password)
+                                </td>
+                                <td></td>
+                            </tr>
 
-                    </table>
+                            <tr>
+                                <td style="font-weight: bold;">Confirm Password:</td>
+                                <td>
+                                    @Html.EditorFor(userPassword => userPassword.ConfirmPassword, new { htmlAttributes = new { placeholder = "Password", required = "required" } })
+                                    <br>@Html.ValidationMessageFor(validInfo => validInfo.ConfirmPassword)
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
 
+                    </div>
+
+                    <div class="modal-footer">
+                        <input class="SignUpButton" id="Submit" type="submit" value="Sign Up" align="right" />
+                    </div>
+                }
                 </div>
-
-                <div class="modal-footer">
-                    <input class="SignUpButton" id="Submit" type="submit" value="Sign Up" align="right" />
-                </div>
-            </div>
         </div>
 
     </div>
 
 </body>
-    </html>
+</html>
+
+
+
