@@ -21,14 +21,15 @@ namespace JooleGroupProject.Controllers
         public JooleModel mai;
 
 
-        private ProductViewModel GenerateProductViewModel(int productId)
+        private JooleModel GenerateProductViewModel(int productId)
         {
             //TODO: Get manufacturer name from manufacturer ID
             ProductViewModel viewModel = new ProductViewModel();
             viewModel.Product = productService.GetProduct(productId);
             viewModel.TechSpecsProps = propertyService.GetTechSpecs(productId);
             viewModel.TypeProps = propertyService.GetTypeProps(productId);
-            return viewModel;
+            mai.ProductView = viewModel;
+            return mai;
         }
 
         public ProductController()
@@ -45,14 +46,13 @@ namespace JooleGroupProject.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            viewModel.Categories = this.catService.getCategory().ToList();
-            mai.SearchView = viewModel;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
             return View(mai);
         }
         [HttpPost]
         public ActionResult Index(string CustomerName)
         {
-            mai.SearchView = viewModel;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
             return View(mai);
         }
 
@@ -62,7 +62,7 @@ namespace JooleGroupProject.Controllers
             IEnumerable<tblProduct> products = this.productService.GetByProductsBySubCategory(subCatId);
             foreach (tblProduct p in products)
             {
-                ProductViewModel productViewModel = GenerateProductViewModel(p.Product_ID);
+                ProductViewModel productViewModel = GenerateProductViewModel(p.Product_ID).ProductView;
 
                 viewModel.Products.Add(productViewModel);
             }
@@ -75,37 +75,43 @@ namespace JooleGroupProject.Controllers
             {
                 System.Diagnostics.Debug.WriteLine(f.tblProperty.Property_ID);
             }
-
-            return View(viewModel);
+            mai.PSVModel = viewModel;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
+            return View(mai);
         }
 
         public ActionResult ProductDetails_placeholder(int productId = 1)
         {
-            ProductViewModel viewModel = GenerateProductViewModel(productId);
-
-            return View(viewModel);
+            mai = GenerateProductViewModel(productId);
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
+            return View(mai);
         }
 
         public ActionResult SubmitCompare()
         {
             List<ProductViewModel> viewModels = new List<ProductViewModel>();
-            viewModels.Add(GenerateProductViewModel(1));
-            viewModels.Add(GenerateProductViewModel(2));
-            viewModels.Add(GenerateProductViewModel(3));
-            return View("ProductCompare_placeholder", viewModels);
+            viewModels.Add(GenerateProductViewModel(1).ProductView);
+            viewModels.Add(GenerateProductViewModel(2).ProductView);
+            viewModels.Add(GenerateProductViewModel(3).ProductView);
+            mai.LProduct = viewModels;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
+            return View("ProductCompare_placeholder", mai);
         }
 
         public ActionResult ProductCompare_placeholder()
         {
             List<ProductViewModel> viewModels = new List<ProductViewModel>();
-            viewModels.Add(GenerateProductViewModel(1));
-            viewModels.Add(GenerateProductViewModel(2));
-            viewModels.Add(GenerateProductViewModel(3));
-            return View(viewModels);
+            viewModels.Add(GenerateProductViewModel(1).ProductView);
+            viewModels.Add(GenerateProductViewModel(2).ProductView);
+            viewModels.Add(GenerateProductViewModel(3).ProductView);
+            mai.LProduct = viewModels;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
+            return View(mai);
         }
 
         public ActionResult ProductDetail(int id)
         {
+          
             ViewData["tblProducts"] = productService.GetProductDetails(id);
             ViewData["UseType"] = propertyValueService.GetUseTypeByProductId(id);
             ViewData["Application"] = propertyValueService.GetApplicationByProductId(id);
@@ -116,8 +122,8 @@ namespace JooleGroupProject.Controllers
             ViewData["FanSpeed"] = propertyValueService.GetFanSpeedByProductId(id);
             ViewData["NumFanSpeed"] = propertyValueService.GetNumFanSpeedByProductId(id);
             ViewData["SoundAtMaxSpeed"] = propertyValueService.GetSoundAtMaxSpeedByProductId(id);
-
-            return View();
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
+            return View(mai);
 
 
         }
@@ -127,8 +133,7 @@ namespace JooleGroupProject.Controllers
         }
         public ActionResult CategoryDropdown()
         {
-            viewModel.Categories = this.catService.getCategory().ToList();
-            mai.SearchView = viewModel;
+            mai.SearchView.Categories = this.catService.getCategory().ToList();
             return View(mai);
         }
         [HttpPost]

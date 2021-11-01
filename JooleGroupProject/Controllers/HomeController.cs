@@ -26,5 +26,6 @@ namespace JooleGroupProject.Controllers
 
             return View();
         }
+
     }
 }

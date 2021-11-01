@@ -1,10 +1,8 @@
-﻿@model List<ProductViewModel>
+﻿@model JooleGroupProject.Models.JooleModel
 @using JooleGroupProject.Data;
 @using JooleGroupProject.Models;
 
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -20,21 +18,21 @@
         </tr>
         <tr>
             <td>Manufacturer</td>
-            @foreach (ProductViewModel product in Model)
+            @foreach (ProductViewModel product in Model.LProduct)
             {
                 <td>@product.Product.Manufacturer_ID</td>
             }
         </tr>
         <tr>
             <td>Series</td>
-            @foreach (ProductViewModel product in Model)
+            @foreach (ProductViewModel product in Model.LProduct)
             {
                 <td>@product.Product.Series</td>
             }
         </tr>
         <tr>
             <td>Model</td>
-            @foreach (ProductViewModel product in Model)
+            @foreach (ProductViewModel product in Model.LProduct)
             {
                 <td>@product.Product.Model</td>
 
@@ -43,11 +41,11 @@
         <tr>
             <td>TYPE</td>
         </tr>
-        @foreach (string propName in @Model[0].TypeProps.Keys)
+        @foreach (string propName in @Model.LProduct[0].TypeProps.Keys)
         {
             <tr>
                 <td>@propName</td>
-                @foreach (ProductViewModel product in Model)
+                @foreach (ProductViewModel product in Model.LProduct)
                 {
                     <td>@product.TypeProps[@propName]</td>
                 }
@@ -56,11 +54,11 @@
         <tr>
             <td>TECHNICAL SPECIFIC</td>
         </tr>
-        @foreach (string propName in @Model[0].TechSpecsProps.Keys)
+        @foreach (string propName in @Model.LProduct[0].TechSpecsProps.Keys)
         {
             <tr>
                 <td>@propName</td>
-                @foreach (ProductViewModel product in Model)
+                @foreach (ProductViewModel product in Model.LProduct)
                 {
                     <td>@product.TechSpecsProps[@propName]</td>
                 }
